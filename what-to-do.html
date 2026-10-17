@@ -55,12 +55,32 @@
     pointer-events: none;
   }
 
-  /* What to do? page uses its own background photo; falls back to the main one if the file is missing */
-  body.page-todo::before{
-    background:
-      url("what-to-do-background.jpg") center / cover no-repeat,
-      url("philippines-land-pollution-background.png") center / cover no-repeat,
-      #14150F;
+  /* What to do? page: photo collage background. Tiles sit over the main background,
+     so any photo not uploaded yet simply shows the original image underneath. */
+  .bg-collage{
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 3px;
+    pointer-events: none;
+  }
+  .bg-collage span{
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: saturate(0.85) brightness(0.8);
+  }
+  .bg-collage span:nth-child(1){ background-image: url("collage-1.jpg"); }
+  .bg-collage span:nth-child(2){ background-image: url("collage-2.jpg"); }
+  .bg-collage span:nth-child(3){ background-image: url("collage-3.jpg"); }
+  .bg-collage span:nth-child(4){ background-image: url("collage-4.jpg"); }
+  .bg-collage span:nth-child(5){ background-image: url("collage-5.jpg"); }
+  .bg-collage span:nth-child(6){ background-image: url("collage-6.jpg"); }
+  @media (max-width: 640px){
+    .bg-collage{ grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, 1fr); }
   }
   .photo-credit{ display: block; margin-top: 6px; font-size: 11.5px; opacity: 0.85; }
   .photo-credit a{ color: inherit; }
@@ -552,6 +572,8 @@
 </head>
 <body class="page-todo">
 
+<div class="bg-collage" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
 <nav class="site-nav" aria-label="Pages">
   <ul class="nav-list">
     <li class="nav-item has-sub">
@@ -733,9 +755,7 @@
 </section>
 
 <footer>For project purpose only
-  <!-- Fill in after choosing your photo, e.g.:
-       Background photo: "Material recovery facility of Poblacion 2, Oroquieta City" by AUTHOR, via Wikimedia Commons, LICENSE -->
-  <span class="photo-credit">Background photo: TITLE by AUTHOR, via SOURCE (LICENSE)</span>
+  <span class="photo-credit">Background photos: SOURCE 1, SOURCE 2, SOURCE 3, SOURCE 4, SOURCE 5, SOURCE 6</span>
 </footer>
 
 <script>
