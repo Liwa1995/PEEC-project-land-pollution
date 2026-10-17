@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>What Now? | Lupang Hinirang... Lupang Nilalason</title>
+<title>What Now? | Lupang Iingatan... Simulan Natin</title>
 <link rel="icon" type="image/png" href="land-pollution-favicon.png">
 <link rel="apple-touch-icon" href="land-pollution-favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,6 +53,95 @@
       url("philippines-land-pollution-background.png") center / cover no-repeat,
       #14150F;
     pointer-events: none;
+  }
+
+  /* ---------- Coming soon (What Now?) ---------- */
+  .soon{
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 52px clamp(22px, 6vw, 56px) 56px;
+    background: var(--paper);
+    border-radius: 3px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+    position: relative;
+    overflow: hidden;
+  }
+  .soon::before{
+    content: "";
+    position: absolute;
+    left: 0; right: 0; top: 0;
+    height: 8px;
+    background: repeating-linear-gradient(-45deg, var(--toxic) 0 18px, #14150F 18px 36px);
+  }
+  .soon-tag{
+    display: inline-block;
+    font-family: var(--display);
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    background: var(--toxic);
+    padding: 5px 12px;
+    border-radius: 2px;
+    margin: 0 0 22px;
+  }
+  .soon h1{
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(1.9rem, 4vw, 2.5rem);
+    line-height: 1.12;
+    margin: 0 0 16px;
+    color: var(--ink);
+  }
+  .soon p{
+    font-family: var(--serif);
+    font-size: 17.5px;
+    line-height: 1.7;
+    color: var(--ink);
+    margin: 0 0 18px;
+  }
+  .soon-list{
+    list-style: none;
+    margin: 26px 0 34px;
+    padding: 0;
+    border-top: 1px solid var(--line);
+  }
+  .soon-list li{
+    display: grid;
+    grid-template-columns: 7.5rem minmax(0, 1fr);
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .soon-list b{
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--rust);
+  }
+  .soon-links{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .soon-links a{
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 11px 18px;
+    border-radius: 3px;
+    border: 1.5px solid var(--soil);
+    color: var(--soil);
+  }
+  .soon-links a.primary{ background: var(--soil); color: var(--paper); }
+  .soon-links a:hover{ background: var(--rust); border-color: var(--rust); color: var(--paper); }
+  .soon-links a:focus-visible{ outline: 2px solid var(--rust); outline-offset: 3px; }
+  @media (max-width: 640px){
+    .soon-list li{ grid-template-columns: minmax(0, 1fr); gap: 2px; }
   }
 
   /* ---------- Hero ---------- */
@@ -546,9 +635,28 @@
 <section id="home">
   <p class="hero-eyebrow">What Now?</p>
   <h1 class="hero-title">
-    <span class="stark">Lupang Hinirang... Lupang Nilalason</span>
+    <span class="stark">Lupang Iingatan... Simulan Natin</span>
   </h1>
   <hr class="hero-rule">
+  <p class="hero-sub">The land we will protect starts with what we do next.</p>
+</section>
+
+<section id="land-pollution">
+  <div class="soon">
+    <p class="soon-tag">Coming soon</p>
+    <h1>The next step is being prepared.</h1>
+    <p>This page will turn the facts and solutions into action. It will show how each of us can help keep waste off the land, starting at home and reaching the whole barangay.</p>
+    <ul class="soon-list">
+      <li><b>At home</b><span>Simple habits that cut and sort our waste every day.</span></li>
+      <li><b>In the barangay</b><span>How to support the MRF, segregated collection, and local clean-ups.</span></li>
+      <li><b>Speaking up</b><span>Ways to push for stronger enforcement and public reporting.</span></li>
+    </ul>
+    <p>While this page is being built, catch up on the story so far.</p>
+    <div class="soon-links">
+      <a class="primary" href="index.html">Read: What is the Issue?</a>
+      <a href="what-to-do.html">Read: What to do?</a>
+    </div>
+  </div>
 </section>
 
 <footer>For project purpose only</footer>
