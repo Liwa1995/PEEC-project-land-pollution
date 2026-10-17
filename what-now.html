@@ -29,7 +29,7 @@
   *{ box-sizing: inherit; }
   html{
     scroll-behavior: smooth;
-    scroll-padding-top: env(safe-area-inset-top, 0px);
+    scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 64px);
   }
   @media (prefers-reduced-motion: reduce){
     html{ scroll-behavior: auto; }
@@ -404,28 +404,86 @@
   }
   /* ---------- Page navigation ---------- */
   .site-nav{
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px 6px;
-    padding: 14px calc(8vw - 12px);
-    background: rgba(18,19,12,0.82);
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 20;
+    padding: 10px calc(8vw - 12px);
+    background: rgba(18,19,12,0.94);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
     border-bottom: 1px solid rgba(159,183,28,0.35);
   }
-  .site-nav a{
+  .nav-list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 10px;
+  }
+  .nav-item{ position: relative; }
+  .nav-top{ display: flex; align-items: center; }
+  .nav-link{
     font-family: var(--display);
     font-size: 15px;
     letter-spacing: 0.03em;
     color: rgba(234,231,214,0.85);
     text-decoration: none;
-    padding: 6px 12px;
-    border-radius: 2px;
+    padding: 8px 6px 8px 12px;
     border-bottom: 2px solid transparent;
   }
-  .site-nav a:hover{ color: var(--paper); background: rgba(234,231,214,0.08); }
-  .site-nav a[aria-current="page"]{ color: var(--toxic); border-bottom-color: var(--toxic); }
-  .site-nav a:focus-visible{ outline: 2px solid var(--toxic); outline-offset: 2px; }
+  .nav-item:not(.has-sub) .nav-link{ padding-right: 12px; }
+  .nav-link:hover{ color: var(--paper); }
+  .nav-link[aria-current="page"]{ color: var(--toxic); border-bottom-color: var(--toxic); }
+  .nav-toggle{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    margin-right: 4px;
+    padding: 0;
+    border: 0;
+    border-radius: 2px;
+    background: transparent;
+    color: rgba(234,231,214,0.75);
+    cursor: pointer;
+  }
+  .nav-toggle:hover{ color: var(--paper); background: rgba(234,231,214,0.08); }
+  .nav-toggle svg{ transition: transform .15s ease; }
+  .nav-item.open .nav-toggle svg{ transform: rotate(180deg); }
+  .site-nav a:focus-visible, .nav-toggle:focus-visible{ outline: 2px solid var(--toxic); outline-offset: 2px; }
+
+  .nav-sub{
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 280px;
+    margin: 0;
+    padding: 8px 0;
+    list-style: none;
+    background: var(--paper);
+    border-top: 3px solid var(--toxic);
+    border-radius: 0 0 3px 3px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+  }
+  .nav-item.open .nav-sub{ display: block; }
+  @media (hover: hover){
+    .nav-item.has-sub:hover .nav-sub{ display: block; }
+  }
+  .nav-sub a{
+    display: block;
+    padding: 9px 18px;
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.35;
+    color: var(--soil);
+    text-decoration: none;
+  }
+  .nav-sub a:hover{ background: var(--paper-2); color: var(--rust); }
+  .nav-subitem a{ padding-left: 34px; font-size: 13.5px; color: var(--ash); }
+
   .next-page{
     margin: 48px 0 0;
     font-family: var(--sans);
@@ -433,17 +491,56 @@
   }
   .next-page a{ color: var(--rust); font-weight: 600; }
   @media (max-width: 640px){
-    .site-nav{ padding: 10px calc(6vw - 8px); }
-    .site-nav a{ font-size: 14px; padding: 6px 8px; }
+    .site-nav{ padding: 6px calc(6vw - 8px); }
+    .nav-list{ gap: 2px 0; }
+    .nav-link{ font-size: 13.5px; letter-spacing: 0.01em; padding: 8px 2px 8px 6px; }
+    .nav-item:not(.has-sub) .nav-link{ padding-right: 6px; }
+    .nav-toggle{ width: 24px; margin-right: 2px; }
+    .nav-item{ position: static; }
+    .nav-sub{ left: 3vw; right: 3vw; min-width: 0; }
   }
 </style>
 </head>
 <body>
 
 <nav class="site-nav" aria-label="Pages">
-  <a href="index.html">What is the Issue?</a>
-  <a href="what-to-do.html">What to do?</a>
-  <a href="what-now.html" aria-current="page">What Now?</a>
+  <ul class="nav-list">
+    <li class="nav-item has-sub">
+      <div class="nav-top">
+        <a class="nav-link" href="index.html">What is the Issue?</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="sub-issue" aria-label="Show sections: What is the Issue?"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <ul class="nav-sub" id="sub-issue">
+        <li><a href="index.html#definition">What is Land Pollution?</a></li>
+        <li><a href="index.html#causes">Causes of Land Pollution</a></li>
+        <li><a href="index.html#effects">Effects of Land Pollution</a></li>
+        <li><a href="index.html#status">Current Status</a></li>
+        <li><a href="index.html#regions">Top 5 Waste-Generating Regions</a></li>
+        <li><a href="index.html#video">Watch the Video</a></li>
+        <li><a href="index.html#references">References</a></li>
+      </ul>
+    </li>
+    <li class="nav-item has-sub">
+      <div class="nav-top">
+        <a class="nav-link" href="what-to-do.html">What to do?</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="sub-todo" aria-label="Show sections: What to do?"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <ul class="nav-sub" id="sub-todo">
+        <li><a href="what-to-do.html#solutions">Existing Solutions</a></li>
+        <li class="nav-subitem"><a href="what-to-do.html#ra9003">Republic Act No. 9003</a></li>
+        <li class="nav-subitem"><a href="what-to-do.html#mrf">Materials Recovery Facilities</a></li>
+        <li class="nav-subitem"><a href="what-to-do.html#plans">Ten-Year Solid-Waste Management Plans</a></li>
+        <li><a href="what-to-do.html#album">Solutions on the Ground</a></li>
+        <li><a href="what-to-do.html#effectiveness">How Effective and Sustainable Are These Solutions?</a></li>
+        <li><a href="what-to-do.html#references">References</a></li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <div class="nav-top">
+        <a class="nav-link" href="what-now.html" aria-current="page">What Now?</a>
+      </div>
+    </li>
+  </ul>
 </nav>
 
 <section id="home">
@@ -456,5 +553,40 @@
 
 <footer>For project purpose only</footer>
 
+<script>
+  (function(){
+    var items = document.querySelectorAll('.nav-item.has-sub');
+    function closeAll(except){
+      items.forEach(function(it){
+        if(it !== except){
+          it.classList.remove('open');
+          it.querySelector('.nav-toggle').setAttribute('aria-expanded','false');
+        }
+      });
+    }
+    items.forEach(function(it){
+      var btn = it.querySelector('.nav-toggle');
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        var open = !it.classList.contains('open');
+        closeAll(it);
+        it.classList.toggle('open', open);
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      it.querySelectorAll('.nav-sub a').forEach(function(a){
+        a.addEventListener('click', function(){ closeAll(); });
+      });
+    });
+    document.addEventListener('click', function(e){
+      if(!e.target.closest('.site-nav')) closeAll();
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape'){
+        var open = document.querySelector('.nav-item.open');
+        if(open){ closeAll(); open.querySelector('.nav-toggle').focus(); }
+      }
+    });
+  })();
+</script>
 </body>
 </html>
