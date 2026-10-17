@@ -325,6 +325,13 @@
   }
   .region-row:first-child .bar i{ background: linear-gradient(90deg, var(--rust), #7d3515); }
 
+  .growth-row{ grid-template-columns: minmax(0, 1fr); }
+  .growth-row .region-rank{ display: none; }
+  .growth-row.bad .bar i{ background: linear-gradient(90deg, var(--rust), #7d3515); }
+  .growth-row:not(.bad) .bar i{ background: linear-gradient(90deg, #6f8214, var(--toxic)); }
+  .growth-row .region-value{ font-size: 17px; }
+  .growth-row.bad .region-value{ color: var(--rust); }
+
   .update-note{
     border-left: 3px solid var(--toxic);
     background: rgba(159,183,28,0.10);
@@ -395,9 +402,49 @@
     .region-chart{ padding: 18px 14px 12px; }
     .region-head{ flex-direction: column; gap: 2px; }
   }
+  /* ---------- Page navigation ---------- */
+  .site-nav{
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 6px;
+    padding: 14px calc(8vw - 12px);
+    background: rgba(18,19,12,0.82);
+    border-bottom: 1px solid rgba(159,183,28,0.35);
+  }
+  .site-nav a{
+    font-family: var(--display);
+    font-size: 15px;
+    letter-spacing: 0.03em;
+    color: rgba(234,231,214,0.85);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 2px;
+    border-bottom: 2px solid transparent;
+  }
+  .site-nav a:hover{ color: var(--paper); background: rgba(234,231,214,0.08); }
+  .site-nav a[aria-current="page"]{ color: var(--toxic); border-bottom-color: var(--toxic); }
+  .site-nav a:focus-visible{ outline: 2px solid var(--toxic); outline-offset: 2px; }
+  .next-page{
+    margin: 48px 0 0;
+    font-family: var(--sans);
+    font-size: 15px;
+  }
+  .next-page a{ color: var(--rust); font-weight: 600; }
+  @media (max-width: 640px){
+    .site-nav{ padding: 10px calc(6vw - 8px); }
+    .site-nav a{ font-size: 14px; padding: 6px 8px; }
+  }
 </style>
 </head>
 <body>
+
+<nav class="site-nav" aria-label="Pages">
+  <a href="index.html" aria-current="page">What is the Issue?</a>
+  <a href="what-to-do.html">What to do?</a>
+  <a href="what-now.html">What Now?</a>
+</nav>
 
 <section id="home">
   <p class="hero-eyebrow">What is the Issue?</p>
@@ -560,6 +607,8 @@
       <p class="video-link">If the video does not load, <a href="https://www.youtube.com/watch?v=mFslA0GxNEQ" target="_blank" rel="noopener">watch it on YouTube</a>.</p>
 
       <p>These figures show that land pollution remains a serious environmental challenge. Addressing it requires proper segregation at source, reliable waste collection, functioning materials-recovery facilities, safe treatment of hazardous waste, enforcement against illegal dumping, and greater participation from households, businesses, industries, and local governments.</p>
+
+      <p class="next-page">Next: <a href="what-to-do.html">What to do?</a></p>
 
       <div class="refs" id="references">
         <h2>References</h2>

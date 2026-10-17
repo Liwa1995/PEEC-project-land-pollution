@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>What Now? | Lupang Hinirang... Lupang Nilalason</title>
+<link rel="icon" type="image/png" href="land-pollution-favicon.png">
+<link rel="apple-touch-icon" href="land-pollution-favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    box-sizing: border-box;
+    --ink:      #1B1C15;
+    --soil:     #3F3D26;
+    --rust:     #A8532B;
+    --toxic:    #9FB71C;
+    --paper:    #EAE7D6;
+    --paper-2:  #DEDABE;
+    --ash:      #6D6B52;
+    --line:     rgba(27,28,21,0.14);
+    --serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+    --sans: 'IBM Plex Sans', -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --display: 'Oswald', 'IBM Plex Sans', sans-serif;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *{ box-sizing: inherit; }
+  html{
+    scroll-behavior: smooth;
+    scroll-padding-top: env(safe-area-inset-top, 0px);
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+  }
+  body{
+    margin:0;
+    background: #14150F;
+    color: var(--ink);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  img,svg{ max-width:100%; }
+
+  /* ---------- Fixed background (stays put on scroll and TOC jumps) ---------- */
+  body::before{
+    content:"";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+      url("philippines-land-pollution-background.png") center / cover no-repeat,
+      #14150F;
+    pointer-events: none;
+  }
+
+  /* ---------- Hero ---------- */
+  section#home{
+    min-height: 60vh;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    /* Overlay only behind the text on the left; the right side is almost clear
+       so the dumpsite and sky stay visible. The image itself is the fixed body layer. */
+    background:
+      linear-gradient(90deg, rgba(18,19,12,0.72) 0%, rgba(18,19,12,0.50) 38%, rgba(18,19,12,0.12) 70%, rgba(18,19,12,0) 100%),
+      linear-gradient(180deg, rgba(18,19,12,0) 60%, rgba(18,19,12,0.45) 100%);
+    color: var(--paper);
+    padding: 64px 8vw 56px;
+    overflow: hidden;
+  }
+  section#home::before{
+    content:"";
+    position:absolute; inset:0;
+    opacity: 0.18;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+    pointer-events:none;
+  }
+  section#home::after{
+    content:"";
+    position:absolute; left:0; right:0; bottom:0;
+    height: 8px;
+    background: repeating-linear-gradient(-45deg, var(--toxic) 0 18px, #14150F 18px 36px);
+    opacity: 0.9;
+  }
+  section#home > *{ position: relative; z-index: 1; }
+  .hero-eyebrow{
+    font-family: var(--display);
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    color: var(--toxic);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+    margin: 0 0 18px;
+    max-width: 46ch;
+    line-height: 1.5;
+  }
+  .hero-title{
+    font-family: var(--serif);
+    font-weight: 700;
+    line-height: 1.04;
+    margin: 0;
+    font-size: clamp(2.2rem, 5vw, 4.25rem);
+    max-width: 20ch;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.55), 0 4px 28px rgba(0,0,0,0.6);
+  }
+  .hero-title .stark{
+    color: var(--paper);
+    display:block;
+  }
+  .hero-rule{
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--toxic), var(--rust));
+    margin: 24px 0 16px;
+    border: none;
+  }
+  .hero-sub{
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.65;
+    color: rgba(239,231,216,0.95);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+    max-width: 52ch;
+    margin: 0;
+  }
+  .hero-cta{
+    display:inline-flex;
+    align-items:center;
+    gap: 10px;
+    align-self: flex-start;
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--toxic);
+    padding: 13px 22px;
+    border-radius: 3px;
+    text-decoration:none;
+    transition: transform .15s ease, background .15s ease;
+  }
+  .hero-cta:hover{ background: #b3cc2e; transform: translateY(-1px); }
+  .hero-cta:focus-visible{ outline: 2px solid var(--paper); outline-offset: 3px; }
+
+  /* ---------- Content page ---------- */
+  section#land-pollution{
+    background: rgba(18,19,12,0.35);
+    padding: 76px 5vw 100px;
+  }
+  /* The report sits on a paper panel so it stays easy to read over the photo */
+  .content-wrap{
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 56px clamp(20px, 6vw, 60px) 64px;
+    background: var(--paper);
+    border-radius: 3px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+  }
+  h1.page-title{
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(2rem, 4vw, 2.7rem);
+    margin: 0 0 28px;
+    line-height: 1.12;
+  }
+  .toc{
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--toxic);
+    background: var(--paper-2);
+    padding: 18px 22px;
+    margin: 0 0 48px;
+    border-radius: 2px;
+  }
+  .toc-label{
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ash);
+    margin: 0 0 10px;
+  }
+  .toc ol{
+    margin:0; padding-left: 20px;
+    font-family: var(--sans);
+    font-size: 14.5px;
+    line-height: 1.9;
+  }
+  .toc a{ color: var(--soil); text-decoration: none; border-bottom: 1px solid transparent; }
+  .toc a:hover{ border-bottom-color: var(--rust); color: var(--rust); }
+
+  article p{
+    font-family: var(--serif);
+    font-size: 17.5px;
+    line-height: 1.72;
+    color: var(--ink);
+    margin: 0 0 22px;
+  }
+  article h2{
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin: 52px 0 18px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+  }
+  article h2:first-of-type{ margin-top: 0; padding-top: 0; border-top: none; }
+  article h3{
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 15.5px;
+    color: var(--soil);
+    margin: 26px 0 8px;
+  }
+  article ul{
+    margin: 0 0 24px;
+    padding-left: 20px;
+    font-family: var(--sans);
+    font-size: 15.5px;
+    line-height: 1.85;
+    color: var(--ink);
+  }
+  article li{ margin-bottom: 4px; }
+  .cite{
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ash);
+  }
+
+  /* stat row */
+  .stat-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin: 8px 0 40px;
+  }
+  .stat{
+    background: var(--paper);
+    padding: 22px 18px;
+  }
+  .stat .num{
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    color: var(--rust);
+    display:block;
+    line-height: 1.1;
+  }
+  .stat .label{
+    font-family: var(--sans);
+    font-size: 12.5px;
+    color: var(--soil);
+    margin-top: 6px;
+    display:block;
+    line-height: 1.4;
+  }
+
+  /* ---------- Regional ranking chart ---------- */
+  .region-chart{
+    margin: 18px 0 14px;
+    padding: 22px 22px 16px;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+  }
+  .region-chart figcaption{
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ash);
+    margin-top: 14px;
+    line-height: 1.5;
+  }
+  .region-list{
+    list-style: none;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .region-row{
+    display: grid;
+    grid-template-columns: 1.6rem minmax(0, 1fr);
+    column-gap: 10px;
+    margin-bottom: 16px !important;
+  }
+  .region-rank{
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.35rem;
+    line-height: 1;
+    color: var(--rust);
+    padding-top: 2px;
+  }
+  .region-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    font-family: var(--sans);
+    font-size: 14.5px;
+    line-height: 1.35;
+    margin-bottom: 6px;
+  }
+  .region-name{ font-weight: 600; color: var(--ink); }
+  .region-name small{ font-weight: 400; color: var(--ash); font-size: 12.5px; }
+  .region-value{
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--soil);
+    white-space: nowrap;
+  }
+  .region-value span{ font-family: var(--sans); font-size: 12px; color: var(--ash); font-weight: 400; }
+  .bar{
+    height: 12px;
+    background: rgba(27,28,21,0.08);
+    border-radius: 1px;
+    overflow: hidden;
+  }
+  .bar i{
+    display: block;
+    height: 100%;
+    width: var(--w);
+    background: linear-gradient(90deg, var(--soil), var(--rust));
+  }
+  .region-row:first-child .bar i{ background: linear-gradient(90deg, var(--rust), #7d3515); }
+
+  .growth-row{ grid-template-columns: minmax(0, 1fr); }
+  .growth-row .region-rank{ display: none; }
+  .growth-row.bad .bar i{ background: linear-gradient(90deg, var(--rust), #7d3515); }
+  .growth-row:not(.bad) .bar i{ background: linear-gradient(90deg, #6f8214, var(--toxic)); }
+  .growth-row .region-value{ font-size: 17px; }
+  .growth-row.bad .region-value{ color: var(--rust); }
+
+  .update-note{
+    border-left: 3px solid var(--toxic);
+    background: rgba(159,183,28,0.10);
+    padding: 16px 20px;
+    margin: 22px 0 30px;
+  }
+  .update-note p{ margin: 0; font-size: 16.5px; }
+
+  /* ---------- Video ---------- */
+  .video-frame{
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #14150F;
+    border: 1px solid var(--line);
+    margin: 8px 0 10px;
+  }
+  .video-frame iframe{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .video-link{
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ash);
+    margin: 0 0 20px;
+  }
+  .video-link a{ color: var(--soil); }
+
+  /* references */
+  .refs{
+    margin-top: 60px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line);
+  }
+  .refs h2{ margin-top: 0; padding-top: 0; border-top: none; }
+  .refs ol{
+    padding-left: 20px;
+    font-family: var(--sans);
+    font-size: 13.5px;
+    line-height: 1.9;
+    color: var(--ash);
+  }
+  .refs a{ color: var(--soil); }
+
+  footer{
+    text-align:center;
+    font-family: var(--sans);
+    font-size: 12.5px;
+    color: rgba(239,231,216,0.85);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+    padding: 0 8vw 46px;
+    background: rgba(18,19,12,0.35);
+  }
+
+  @media (max-width: 640px){
+    section#home{
+      padding: 56px 6vw 44px;
+      min-height: 55vh;
+      background: linear-gradient(180deg, rgba(18,19,12,0.45) 0%, rgba(18,19,12,0.70) 100%);
+    }
+    body::before{ background-position: 70% center; }
+    section#land-pollution{ padding: 40px 3vw 60px; }
+    .content-wrap{ padding: 36px 18px 44px; }
+    .region-chart{ padding: 18px 14px 12px; }
+    .region-head{ flex-direction: column; gap: 2px; }
+  }
+  /* ---------- Page navigation ---------- */
+  .site-nav{
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 6px;
+    padding: 14px calc(8vw - 12px);
+    background: rgba(18,19,12,0.82);
+    border-bottom: 1px solid rgba(159,183,28,0.35);
+  }
+  .site-nav a{
+    font-family: var(--display);
+    font-size: 15px;
+    letter-spacing: 0.03em;
+    color: rgba(234,231,214,0.85);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 2px;
+    border-bottom: 2px solid transparent;
+  }
+  .site-nav a:hover{ color: var(--paper); background: rgba(234,231,214,0.08); }
+  .site-nav a[aria-current="page"]{ color: var(--toxic); border-bottom-color: var(--toxic); }
+  .site-nav a:focus-visible{ outline: 2px solid var(--toxic); outline-offset: 2px; }
+  .next-page{
+    margin: 48px 0 0;
+    font-family: var(--sans);
+    font-size: 15px;
+  }
+  .next-page a{ color: var(--rust); font-weight: 600; }
+  @media (max-width: 640px){
+    .site-nav{ padding: 10px calc(6vw - 8px); }
+    .site-nav a{ font-size: 14px; padding: 6px 8px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav" aria-label="Pages">
+  <a href="index.html">What is the Issue?</a>
+  <a href="what-to-do.html">What to do?</a>
+  <a href="what-now.html" aria-current="page">What Now?</a>
+</nav>
+
+<section id="home">
+  <p class="hero-eyebrow">What Now?</p>
+  <h1 class="hero-title">
+    <span class="stark">Lupang Hinirang... Lupang Nilalason</span>
+  </h1>
+  <hr class="hero-rule">
+</section>
+
+<footer>For project purpose only</footer>
+
+</body>
+</html>

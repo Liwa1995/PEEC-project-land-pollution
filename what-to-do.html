@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>What to do? | Lupang Hinirang... Lupang Nilalason</title>
+<link rel="icon" type="image/png" href="land-pollution-favicon.png">
+<link rel="apple-touch-icon" href="land-pollution-favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    box-sizing: border-box;
+    --ink:      #1B1C15;
+    --soil:     #3F3D26;
+    --rust:     #A8532B;
+    --toxic:    #9FB71C;
+    --paper:    #EAE7D6;
+    --paper-2:  #DEDABE;
+    --ash:      #6D6B52;
+    --line:     rgba(27,28,21,0.14);
+    --serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+    --sans: 'IBM Plex Sans', -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --display: 'Oswald', 'IBM Plex Sans', sans-serif;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *{ box-sizing: inherit; }
+  html{
+    scroll-behavior: smooth;
+    scroll-padding-top: env(safe-area-inset-top, 0px);
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+  }
+  body{
+    margin:0;
+    background: #14150F;
+    color: var(--ink);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  img,svg{ max-width:100%; }
+
+  /* ---------- Fixed background (stays put on scroll and TOC jumps) ---------- */
+  body::before{
+    content:"";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+      url("philippines-land-pollution-background.png") center / cover no-repeat,
+      #14150F;
+    pointer-events: none;
+  }
+
+  /* ---------- Hero ---------- */
+  section#home{
+    min-height: 60vh;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    /* Overlay only behind the text on the left; the right side is almost clear
+       so the dumpsite and sky stay visible. The image itself is the fixed body layer. */
+    background:
+      linear-gradient(90deg, rgba(18,19,12,0.72) 0%, rgba(18,19,12,0.50) 38%, rgba(18,19,12,0.12) 70%, rgba(18,19,12,0) 100%),
+      linear-gradient(180deg, rgba(18,19,12,0) 60%, rgba(18,19,12,0.45) 100%);
+    color: var(--paper);
+    padding: 64px 8vw 56px;
+    overflow: hidden;
+  }
+  section#home::before{
+    content:"";
+    position:absolute; inset:0;
+    opacity: 0.18;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+    pointer-events:none;
+  }
+  section#home::after{
+    content:"";
+    position:absolute; left:0; right:0; bottom:0;
+    height: 8px;
+    background: repeating-linear-gradient(-45deg, var(--toxic) 0 18px, #14150F 18px 36px);
+    opacity: 0.9;
+  }
+  section#home > *{ position: relative; z-index: 1; }
+  .hero-eyebrow{
+    font-family: var(--display);
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    color: var(--toxic);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+    margin: 0 0 18px;
+    max-width: 46ch;
+    line-height: 1.5;
+  }
+  .hero-title{
+    font-family: var(--serif);
+    font-weight: 700;
+    line-height: 1.04;
+    margin: 0;
+    font-size: clamp(2.2rem, 5vw, 4.25rem);
+    max-width: 20ch;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.55), 0 4px 28px rgba(0,0,0,0.6);
+  }
+  .hero-title .stark{
+    color: var(--paper);
+    display:block;
+  }
+  .hero-rule{
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--toxic), var(--rust));
+    margin: 24px 0 16px;
+    border: none;
+  }
+  .hero-sub{
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.65;
+    color: rgba(239,231,216,0.95);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+    max-width: 52ch;
+    margin: 0;
+  }
+  .hero-cta{
+    display:inline-flex;
+    align-items:center;
+    gap: 10px;
+    align-self: flex-start;
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--toxic);
+    padding: 13px 22px;
+    border-radius: 3px;
+    text-decoration:none;
+    transition: transform .15s ease, background .15s ease;
+  }
+  .hero-cta:hover{ background: #b3cc2e; transform: translateY(-1px); }
+  .hero-cta:focus-visible{ outline: 2px solid var(--paper); outline-offset: 3px; }
+
+  /* ---------- Content page ---------- */
+  section#land-pollution{
+    background: rgba(18,19,12,0.35);
+    padding: 76px 5vw 100px;
+  }
+  /* The report sits on a paper panel so it stays easy to read over the photo */
+  .content-wrap{
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 56px clamp(20px, 6vw, 60px) 64px;
+    background: var(--paper);
+    border-radius: 3px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+  }
+  h1.page-title{
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(2rem, 4vw, 2.7rem);
+    margin: 0 0 28px;
+    line-height: 1.12;
+  }
+  .toc{
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--toxic);
+    background: var(--paper-2);
+    padding: 18px 22px;
+    margin: 0 0 48px;
+    border-radius: 2px;
+  }
+  .toc-label{
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ash);
+    margin: 0 0 10px;
+  }
+  .toc ol{
+    margin:0; padding-left: 20px;
+    font-family: var(--sans);
+    font-size: 14.5px;
+    line-height: 1.9;
+  }
+  .toc a{ color: var(--soil); text-decoration: none; border-bottom: 1px solid transparent; }
+  .toc a:hover{ border-bottom-color: var(--rust); color: var(--rust); }
+
+  article p{
+    font-family: var(--serif);
+    font-size: 17.5px;
+    line-height: 1.72;
+    color: var(--ink);
+    margin: 0 0 22px;
+  }
+  article h2{
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin: 52px 0 18px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+  }
+  article h2:first-of-type{ margin-top: 0; padding-top: 0; border-top: none; }
+  article h3{
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 15.5px;
+    color: var(--soil);
+    margin: 26px 0 8px;
+  }
+  article ul{
+    margin: 0 0 24px;
+    padding-left: 20px;
+    font-family: var(--sans);
+    font-size: 15.5px;
+    line-height: 1.85;
+    color: var(--ink);
+  }
+  article li{ margin-bottom: 4px; }
+  .cite{
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ash);
+  }
+
+  /* stat row */
+  .stat-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin: 8px 0 40px;
+  }
+  .stat{
+    background: var(--paper);
+    padding: 22px 18px;
+  }
+  .stat .num{
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    color: var(--rust);
+    display:block;
+    line-height: 1.1;
+  }
+  .stat .label{
+    font-family: var(--sans);
+    font-size: 12.5px;
+    color: var(--soil);
+    margin-top: 6px;
+    display:block;
+    line-height: 1.4;
+  }
+
+  /* ---------- Regional ranking chart ---------- */
+  .region-chart{
+    margin: 18px 0 14px;
+    padding: 22px 22px 16px;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+  }
+  .region-chart figcaption{
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ash);
+    margin-top: 14px;
+    line-height: 1.5;
+  }
+  .region-list{
+    list-style: none;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .region-row{
+    display: grid;
+    grid-template-columns: 1.6rem minmax(0, 1fr);
+    column-gap: 10px;
+    margin-bottom: 16px !important;
+  }
+  .region-rank{
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.35rem;
+    line-height: 1;
+    color: var(--rust);
+    padding-top: 2px;
+  }
+  .region-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    font-family: var(--sans);
+    font-size: 14.5px;
+    line-height: 1.35;
+    margin-bottom: 6px;
+  }
+  .region-name{ font-weight: 600; color: var(--ink); }
+  .region-name small{ font-weight: 400; color: var(--ash); font-size: 12.5px; }
+  .region-value{
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--soil);
+    white-space: nowrap;
+  }
+  .region-value span{ font-family: var(--sans); font-size: 12px; color: var(--ash); font-weight: 400; }
+  .bar{
+    height: 12px;
+    background: rgba(27,28,21,0.08);
+    border-radius: 1px;
+    overflow: hidden;
+  }
+  .bar i{
+    display: block;
+    height: 100%;
+    width: var(--w);
+    background: linear-gradient(90deg, var(--soil), var(--rust));
+  }
+  .region-row:first-child .bar i{ background: linear-gradient(90deg, var(--rust), #7d3515); }
+
+  .growth-row{ grid-template-columns: minmax(0, 1fr); }
+  .growth-row .region-rank{ display: none; }
+  .growth-row.bad .bar i{ background: linear-gradient(90deg, var(--rust), #7d3515); }
+  .growth-row:not(.bad) .bar i{ background: linear-gradient(90deg, #6f8214, var(--toxic)); }
+  .growth-row .region-value{ font-size: 17px; }
+  .growth-row.bad .region-value{ color: var(--rust); }
+
+  .update-note{
+    border-left: 3px solid var(--toxic);
+    background: rgba(159,183,28,0.10);
+    padding: 16px 20px;
+    margin: 22px 0 30px;
+  }
+  .update-note p{ margin: 0; font-size: 16.5px; }
+
+  /* ---------- Video ---------- */
+  .video-frame{
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #14150F;
+    border: 1px solid var(--line);
+    margin: 8px 0 10px;
+  }
+  .video-frame iframe{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .video-link{
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ash);
+    margin: 0 0 20px;
+  }
+  .video-link a{ color: var(--soil); }
+
+  /* references */
+  .refs{
+    margin-top: 60px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line);
+  }
+  .refs h2{ margin-top: 0; padding-top: 0; border-top: none; }
+  .refs ol{
+    padding-left: 20px;
+    font-family: var(--sans);
+    font-size: 13.5px;
+    line-height: 1.9;
+    color: var(--ash);
+  }
+  .refs a{ color: var(--soil); }
+
+  footer{
+    text-align:center;
+    font-family: var(--sans);
+    font-size: 12.5px;
+    color: rgba(239,231,216,0.85);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+    padding: 0 8vw 46px;
+    background: rgba(18,19,12,0.35);
+  }
+
+  @media (max-width: 640px){
+    section#home{
+      padding: 56px 6vw 44px;
+      min-height: 55vh;
+      background: linear-gradient(180deg, rgba(18,19,12,0.45) 0%, rgba(18,19,12,0.70) 100%);
+    }
+    body::before{ background-position: 70% center; }
+    section#land-pollution{ padding: 40px 3vw 60px; }
+    .content-wrap{ padding: 36px 18px 44px; }
+    .region-chart{ padding: 18px 14px 12px; }
+    .region-head{ flex-direction: column; gap: 2px; }
+  }
+  /* ---------- Page navigation ---------- */
+  .site-nav{
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 6px;
+    padding: 14px calc(8vw - 12px);
+    background: rgba(18,19,12,0.82);
+    border-bottom: 1px solid rgba(159,183,28,0.35);
+  }
+  .site-nav a{
+    font-family: var(--display);
+    font-size: 15px;
+    letter-spacing: 0.03em;
+    color: rgba(234,231,214,0.85);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 2px;
+    border-bottom: 2px solid transparent;
+  }
+  .site-nav a:hover{ color: var(--paper); background: rgba(234,231,214,0.08); }
+  .site-nav a[aria-current="page"]{ color: var(--toxic); border-bottom-color: var(--toxic); }
+  .site-nav a:focus-visible{ outline: 2px solid var(--toxic); outline-offset: 2px; }
+  .next-page{
+    margin: 48px 0 0;
+    font-family: var(--sans);
+    font-size: 15px;
+  }
+  .next-page a{ color: var(--rust); font-weight: 600; }
+  @media (max-width: 640px){
+    .site-nav{ padding: 10px calc(6vw - 8px); }
+    .site-nav a{ font-size: 14px; padding: 6px 8px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav" aria-label="Pages">
+  <a href="index.html">What is the Issue?</a>
+  <a href="what-to-do.html" aria-current="page">What to do?</a>
+  <a href="what-now.html">What Now?</a>
+</nav>
+
+<section id="home">
+  <p class="hero-eyebrow">What to do?</p>
+  <h1 class="hero-title">
+    <span class="stark">Lupang Hinirang... Lupang Nilalason</span>
+  </h1>
+  <hr class="hero-rule">
+  <p class="hero-sub">The country already has laws, facilities, and local plans to protect the land. Are they working?</p>
+</section>
+
+<section id="land-pollution">
+  <div class="content-wrap">
+    <h1 class="page-title">What to do?</h1>
+
+    <div class="toc">
+      <p class="toc-label">Table of contents</p>
+      <ol>
+        <li><a href="#solutions">Existing Solutions</a>
+          <ol type="a">
+            <li><a href="#ra9003">Republic Act No. 9003</a></li>
+            <li><a href="#mrf">Materials Recovery Facilities</a></li>
+            <li><a href="#plans">Ten-Year Solid-Waste Management Plans</a></li>
+          </ol>
+        </li>
+        <li><a href="#effectiveness">How Effective and Sustainable Are These Solutions?</a></li>
+        <li><a href="#references">References</a></li>
+      </ol>
+    </div>
+
+    <article>
+      <h2 id="solutions">Existing Solutions</h2>
+      <p>The Philippines already has laws, facilities, and local programmes meant to stop waste from ending up on land. Three of the most important are Republic Act No. 9003, materials recovery facilities, and the ten-year solid-waste management plans of local government units. This section explains what each one is, how it works, what it has achieved, and how far it has gone in solving land pollution.</p>
+
+      <h3 id="ra9003">1. Republic Act No. 9003: the Ecological Solid Waste Management Act</h3>
+      <p><strong>What it is.</strong> RA 9003 is the main national law on solid waste. It was signed in 2001 and remains in force today. It treats waste as something to be reduced, sorted, and recovered, not simply thrown away. It also created the National Solid Waste Management Commission to lead and monitor its implementation. <span class="cite">(Republic Act No. 9003, 2001)</span></p>
+      <p><strong>How it works.</strong> The law sets out a system that every household, barangay, and local government is expected to follow:</p>
+      <ul>
+        <li>Waste must be segregated at source into biodegradable, recyclable, residual, and special waste.</li>
+        <li>Littering, open burning, open dumping, and collecting unsegregated waste are prohibited.</li>
+        <li>Barangays handle the collection of biodegradable and recyclable waste; cities and municipalities handle residual waste and its disposal.</li>
+        <li>Open dumpsites were to be phased out and replaced with controlled disposal facilities and sanitary landfills.</li>
+        <li>Violators may be fined or imprisoned.</li>
+      </ul>
+      <p><strong>Results.</strong> RA 9003 is the legal basis of almost every waste programme in the country. By 2024, the Philippines had 12,855 materials recovery facilities and 343 sanitary landfills, all built under the system the law created. However, open and illegal dumping has not disappeared: reported illegal dumpsites nearly doubled, from 43 in 2023 to 79 in 2024. <span class="cite">(Philippine Statistics Authority, 2025)</span></p>
+
+      <h3 id="mrf">2. Materials recovery facilities (MRFs)</h3>
+      <p><strong>What they are.</strong> An MRF is a place where collected waste is sorted before anything is sent for disposal. RA 9003 requires an MRF in every barangay or cluster of barangays. <span class="cite">(Republic Act No. 9003, 2001)</span> As of 2024, there were 12,855 MRFs nationwide, up 8.7% from 11,823 in 2023. <span class="cite">(Philippine Statistics Authority, 2025)</span></p>
+      <p><strong>How they work.</strong> Garbage collected from households is brought to the MRF and sorted. Recyclables such as plastic, paper, glass, and metal are sold to junk shops and recyclers. Biodegradable waste is composted. Only residual waste, which cannot be recycled or composted, is sent to a sanitary landfill.</p>
+      <p><strong>Results.</strong> Every sack of waste that is recycled or composted at an MRF is a sack that does not end up in a dumpsite, a vacant lot, or a canal. MRFs also produce compost for gardens and farms and create income for waste workers. Their weakness is that they depend on households. When waste arrives mixed, much less of it can be recovered, and more of it goes to the landfill.</p>
+
+      <h3 id="plans">3. Ten-year solid-waste management plans of LGUs</h3>
+      <p><strong>What they are.</strong> Under RA 9003, every province, city, and municipality must prepare a solid-waste management plan covering ten years. The National Solid Waste Management Commission reviews and approves these plans. <span class="cite">(Republic Act No. 9003, 2001)</span> As of 2025, 1,459 of 1,592 LGUs, or about 92%, had approved plans. <span class="cite">(DENR-EMB, 2025)</span></p>
+      <p><strong>How they work.</strong> Each plan sets local targets for segregation, collection, recycling, composting, and disposal. The law required LGUs to divert at least 25% of their waste away from disposal facilities within five years. Local solid-waste management boards are formed to carry out the plan. <span class="cite">(Republic Act No. 9003, 2001)</span></p>
+      <p><strong>Results.</strong> Nearly every LGU now has a written guide for managing its waste. This gives local governments a basis for budgeting, building facilities, and enforcing the law. Still, an approved plan is a promise, not a result. The number of approved plans is tracked, but how much each LGU actually achieves on the ground is not regularly reported to the public.</p>
+
+      <h2 id="effectiveness">How Effective and Sustainable Are These Solutions?</h2>
+      <p>The data show real progress in building the system, but also show that the problem is growing faster than the solutions. The chart below compares how quickly facilities and illegal dumpsites grew from 2023 to 2024.</p>
+
+      <figure class="region-chart" aria-labelledby="growth-chart-caption">
+        <ol class="region-list">
+          <li class="region-row growth-row">
+            <span class="region-rank"></span>
+            <div>
+              <div class="region-head">
+                <span class="region-name">Materials recovery facilities <small>(11,823 → 12,855)</small></span>
+                <span class="region-value">+8.7%</span>
+              </div>
+              <div class="bar"><i style="--w:10.4%"></i></div>
+            </div>
+          </li>
+          <li class="region-row growth-row">
+            <span class="region-rank"></span>
+            <div>
+              <div class="region-head">
+                <span class="region-name">Sanitary landfills <small>(343 in 2024)</small></span>
+                <span class="region-value">+14.7%</span>
+              </div>
+              <div class="bar"><i style="--w:17.5%"></i></div>
+            </div>
+          </li>
+          <li class="region-row growth-row bad">
+            <span class="region-rank"></span>
+            <div>
+              <div class="region-head">
+                <span class="region-name">Reported illegal dumpsites <small>(43 → 79)</small></span>
+                <span class="region-value">+84%</span>
+              </div>
+              <div class="bar"><i style="--w:100%"></i></div>
+            </div>
+          </li>
+        </ol>
+        <figcaption id="growth-chart-caption">Year-on-year change from 2023 to 2024. Source: Philippine Statistics Authority (2025).</figcaption>
+      </figure>
+
+      <h3>Evidence that the solutions are working</h3>
+      <ul>
+        <li>About 92% of LGUs have approved ten-year plans, showing that the planning requirement of RA 9003 has been widely followed. <span class="cite">(DENR-EMB, 2025)</span></li>
+        <li>MRFs grew by more than a thousand in a single year, and sanitary landfills grew by 14.7%. <span class="cite">(Philippine Statistics Authority, 2025)</span></li>
+        <li>Because RA 9003 is a permanent law, the system continues even when local or national leaders change.</li>
+        <li>MRFs can partly pay for themselves through the sale of recyclables and compost, which helps them last.</li>
+      </ul>
+
+      <h3>Evidence that the solutions are not enough</h3>
+      <ul>
+        <li>Reported illegal dumpsites grew by 84% in one year, far faster than MRFs or landfills. <span class="cite">(Philippine Statistics Authority, 2025)</span></li>
+        <li>Daily waste generation rose from about 40,087 tons in 2016 to about 61,700 tons in 2026, an increase of roughly 54% in ten years. <span class="cite">(Senate Economic Planning Office, 2017; Philippine Information Agency, 2026)</span></li>
+        <li>About 133 LGUs still have no approved ten-year plan. <span class="cite">(DENR-EMB, 2025)</span></li>
+        <li>The country has more than 42,000 barangays, so 12,855 MRFs still leave many communities without one, even counting MRFs shared by clusters of barangays.</li>
+      </ul>
+
+      <div class="update-note">
+        <p><strong>Conclusion.</strong> The existing solutions are sound and sustainable in design. RA 9003 gives a clear, permanent legal framework, MRFs are practical and low-cost, and ten-year plans give LGUs long-term direction. Their effectiveness, however, is only partial. The facilities are growing, but waste generation and illegal dumping are growing faster. These solutions will only work fully if the law is consistently enforced, more MRFs actually operate, LGUs publicly report their results, and households segregate their waste every day.</p>
+      </div>
+
+      <p class="next-page">Next: <a href="what-now.html">What Now?</a></p>
+
+      <div class="refs" id="references">
+        <h2>References</h2>
+        <ol>
+          <li>Department of Environment and Natural Resources–Environmental Management Bureau. (2025). Philippine solid-waste management data reported through the Convention on Biological Diversity Online Reporting Tool. <a href="https://ort.cbd.int/database/record?documentID=292757">ort.cbd.int</a></li>
+          <li>Philippine Information Agency. (2026, July 2). CALABARZON Regional Ecology Center pushes for inter-agency solid waste management efforts. <a href="https://pia.gov.ph/news/calabarzon-regional-ecology-center-pushes-for-inter-agency-solid-waste-management-efforts/">pia.gov.ph</a></li>
+          <li>Philippine Statistics Authority. (2025, July 10). Philippines generated 269.55 thousand tons of hazardous waste in 2024. <a href="https://psa.gov.ph/statistics/environment/peenra/node/1684077697">psa.gov.ph</a></li>
+          <li>Republic of the Philippines. (2001). Republic Act No. 9003: Ecological Solid Waste Management Act of 2000. The Lawphil Project. <a href="https://lawphil.net/statutes/repacts/ra2001/ra_9003_2001.html">lawphil.net</a></li>
+          <li>Senate Economic Planning Office. (2017, November). At a glance: Philippine solid wastes (AG-17-01). Senate of the Philippines. <a href="https://legacy.senate.gov.ph/publications/SEPO/AAG_Philippine%20Solid%20Wastes_Nov2017.pdf">senate.gov.ph</a></li>
+        </ol>
+      </div>
+    </article>
+  </div>
+</section>
+
+<footer>For project purpose only</footer>
+
+</body>
+</html>
