@@ -580,6 +580,7 @@
   }
   .next-page a{ color: var(--rust); font-weight: 600; }
   @media (max-width: 640px){
+    html{ scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 100px); }
     .site-nav{ padding: 6px calc(6vw - 8px); }
     .nav-list{ gap: 2px 0; }
     .nav-link{ font-size: 13.5px; letter-spacing: 0.01em; padding: 8px 2px 8px 6px; }
@@ -606,7 +607,6 @@
         <li><a href="index.html#status">Current Status</a></li>
         <li><a href="index.html#regions">Top 5 Waste-Generating Regions</a></li>
         <li><a href="index.html#video">Watch the Video</a></li>
-        <li><a href="index.html#references">References</a></li>
       </ul>
     </li>
     <li class="nav-item has-sub">
@@ -621,13 +621,34 @@
         <li class="nav-subitem"><a href="what-to-do.html#plans">Ten-Year Solid-Waste Management Plans</a></li>
         <li><a href="what-to-do.html#album">Solutions on the Ground (Videos)</a></li>
         <li><a href="what-to-do.html#effectiveness">How Effective and Sustainable Are These Solutions?</a></li>
-        <li><a href="what-to-do.html#references">References</a></li>
       </ul>
     </li>
     <li class="nav-item">
       <div class="nav-top">
         <a class="nav-link" href="what-now.html" aria-current="page">What Now?</a>
       </div>
+    </li>
+    <li class="nav-item has-sub">
+      <div class="nav-top">
+        <a class="nav-link" href="glossary.html">Glossary</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="sub-gloss" aria-label="Show sections: Glossary"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <ul class="nav-sub" id="sub-gloss">
+        <li><a href="glossary.html#terms-issue">What is the Issue?</a></li>
+        <li><a href="glossary.html#terms-todo">What to do?</a></li>
+        <li><a href="glossary.html#terms-now">What Now?</a></li>
+      </ul>
+    </li>
+    <li class="nav-item has-sub">
+      <div class="nav-top">
+        <a class="nav-link" href="references.html">References</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="sub-refs" aria-label="Show sections: References"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <ul class="nav-sub" id="sub-refs">
+        <li><a href="references.html#refs-issue">What is the Issue?</a></li>
+        <li><a href="references.html#refs-todo">What to do?</a></li>
+        <li><a href="references.html#refs-now">What Now?</a></li>
+      </ul>
     </li>
   </ul>
 </nav>

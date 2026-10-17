@@ -560,6 +560,7 @@
   }
   .next-page a{ color: var(--rust); font-weight: 600; }
   @media (max-width: 640px){
+    html{ scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 100px); }
     .site-nav{ padding: 6px calc(6vw - 8px); }
     .nav-list{ gap: 2px 0; }
     .nav-link{ font-size: 13.5px; letter-spacing: 0.01em; padding: 8px 2px 8px 6px; }
@@ -588,7 +589,6 @@
         <li><a href="index.html#status">Current Status</a></li>
         <li><a href="index.html#regions">Top 5 Waste-Generating Regions</a></li>
         <li><a href="index.html#video">Watch the Video</a></li>
-        <li><a href="index.html#references">References</a></li>
       </ul>
     </li>
     <li class="nav-item has-sub">
@@ -603,13 +603,34 @@
         <li class="nav-subitem"><a href="#plans">Ten-Year Solid-Waste Management Plans</a></li>
         <li><a href="#album">Solutions on the Ground (Videos)</a></li>
         <li><a href="#effectiveness">How Effective and Sustainable Are These Solutions?</a></li>
-        <li><a href="#references">References</a></li>
       </ul>
     </li>
     <li class="nav-item">
       <div class="nav-top">
         <a class="nav-link" href="what-now.html">What Now?</a>
       </div>
+    </li>
+    <li class="nav-item has-sub">
+      <div class="nav-top">
+        <a class="nav-link" href="glossary.html">Glossary</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="sub-gloss" aria-label="Show sections: Glossary"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <ul class="nav-sub" id="sub-gloss">
+        <li><a href="glossary.html#terms-issue">What is the Issue?</a></li>
+        <li><a href="glossary.html#terms-todo">What to do?</a></li>
+        <li><a href="glossary.html#terms-now">What Now?</a></li>
+      </ul>
+    </li>
+    <li class="nav-item has-sub">
+      <div class="nav-top">
+        <a class="nav-link" href="references.html">References</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="sub-refs" aria-label="Show sections: References"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <ul class="nav-sub" id="sub-refs">
+        <li><a href="references.html#refs-issue">What is the Issue?</a></li>
+        <li><a href="references.html#refs-todo">What to do?</a></li>
+        <li><a href="references.html#refs-now">What Now?</a></li>
+      </ul>
     </li>
   </ul>
 </nav>
@@ -742,13 +763,7 @@
 
       <div class="refs" id="references">
         <h2>References</h2>
-        <ol>
-          <li>Department of Environment and Natural Resources–Environmental Management Bureau. (2025). Philippine solid-waste management data reported through the Convention on Biological Diversity Online Reporting Tool. <a href="https://ort.cbd.int/database/record?documentID=292757">ort.cbd.int</a></li>
-          <li>Philippine Information Agency. (2026, July 2). CALABARZON Regional Ecology Center pushes for inter-agency solid waste management efforts. <a href="https://pia.gov.ph/news/calabarzon-regional-ecology-center-pushes-for-inter-agency-solid-waste-management-efforts/">pia.gov.ph</a></li>
-          <li>Philippine Statistics Authority. (2025, July 10). Philippines generated 269.55 thousand tons of hazardous waste in 2024. <a href="https://psa.gov.ph/statistics/environment/peenra/node/1684077697">psa.gov.ph</a></li>
-          <li>Republic of the Philippines. (2001). Republic Act No. 9003: Ecological Solid Waste Management Act of 2000. The Lawphil Project. <a href="https://lawphil.net/statutes/repacts/ra2001/ra_9003_2001.html">lawphil.net</a></li>
-          <li>Senate Economic Planning Office. (2017, November). At a glance: Philippine solid wastes (AG-17-01). Senate of the Philippines. <a href="https://legacy.senate.gov.ph/publications/SEPO/AAG_Philippine%20Solid%20Wastes_Nov2017.pdf">senate.gov.ph</a></li>
-        </ol>
+        <p>The sources used on this page are listed on the <a href="references.html#refs-todo">References page under “What to do?”</a>. Unfamiliar words are explained in the <a href="glossary.html#terms-todo">Glossary</a>.</p>
       </div>
     </article>
   </div>

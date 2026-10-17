@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Glossary | Lupang Hinirang... Lupang Nilalason</title>
+<link rel="icon" type="image/png" href="land-pollution-favicon.png">
+<link rel="apple-touch-icon" href="land-pollution-favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    box-sizing: border-box;
+    --ink:      #1B1C15;
+    --soil:     #3F3D26;
+    --rust:     #A8532B;
+    --toxic:    #9FB71C;
+    --paper:    #EAE7D6;
+    --paper-2:  #DEDABE;
+    --ash:      #6D6B52;
+    --line:     rgba(27,28,21,0.14);
+    --serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+    --sans: 'IBM Plex Sans', -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --display: 'Oswald', 'IBM Plex Sans', sans-serif;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *{ box-sizing: inherit; }
+  html{
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 64px);
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+  }
+  body{
+    margin:0;
+    background: #14150F;
+    color: var(--ink);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  img,svg{ max-width:100%; }
+
+  /* ---------- Fixed background (stays put on scroll and TOC jumps) ---------- */
+  body::before{
+    content:"";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+      url("philippines-land-pollution-background.png") center / cover no-repeat,
+      #14150F;
+    pointer-events: none;
+  }
+
+  /* ---------- Glossary & references ---------- */
+  .page-intro{ font-family: var(--serif); font-size: 17.5px; line-height: 1.7; margin: 0 0 8px; }
+  .group-note{ font-family: var(--sans); font-size: 14px; color: var(--ash); margin: -6px 0 18px; }
+  .group-note a, .page-intro a{ color: var(--soil); }
+  .gloss{ margin: 0 0 12px; }
+  .gloss div{
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .gloss div:first-child{ border-top: 1px solid var(--line); }
+  .gloss dt{
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.08rem;
+    color: var(--soil);
+    margin: 0 0 4px;
+  }
+  .gloss dt i{ font-weight: 400; color: var(--ash); font-size: 0.92rem; }
+  .gloss dd{
+    margin: 0;
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .ref-list{
+    padding-left: 0;
+    list-style: none;
+    margin: 0 0 12px;
+  }
+  .ref-list li{
+    font-family: var(--sans);
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--ink);
+    padding: 10px 0 10px 2.2em;
+    text-indent: -2.2em;
+    border-bottom: 1px solid var(--line);
+    margin: 0;
+  }
+  .ref-list li:first-child{ border-top: 1px solid var(--line); }
+  .ref-list a{ color: var(--soil); word-break: break-word; }
+  .empty-note{
+    border-left: 3px solid var(--toxic);
+    background: rgba(159,183,28,0.10);
+    padding: 14px 18px;
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.55;
+    margin: 0 0 12px;
+  }
+
+  /* ---------- Hero ---------- */
+  section#home{
+    min-height: 60vh;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    /* Overlay only behind the text on the left; the right side is almost clear
+       so the dumpsite and sky stay visible. The image itself is the fixed body layer. */
+    background:
+      linear-gradient(90deg, rgba(18,19,12,0.72) 0%, rgba(18,19,12,0.50) 38%, rgba(18,19,12,0.12) 70%, rgba(18,19,12,0) 100%),
+      linear-gradient(180deg, rgba(18,19,12,0) 60%, rgba(18,19,12,0.45) 100%);
+    color: var(--paper);
+    padding: 64px 8vw 56px;
+    overflow: hidden;
+  }
+  section#home::before{
+    content:"";
+    position:absolute; inset:0;
+    opacity: 0.18;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+    pointer-events:none;
+  }
+  section#home::after{
+    content:"";
+    position:absolute; left:0; right:0; bottom:0;
+    height: 8px;
+    background: repeating-linear-gradient(-45deg, var(--toxic) 0 18px, #14150F 18px 36px);
+    opacity: 0.9;
+  }
+  section#home > *{ position: relative; z-index: 1; }
+  .hero-eyebrow{
+    font-family: var(--display);
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    color: var(--toxic);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+    margin: 0 0 18px;
+    max-width: 46ch;
+    line-height: 1.5;
+  }
+  .hero-title{
+    font-family: var(--serif);
+    font-weight: 700;
+    line-height: 1.04;
+    margin: 0;
+    font-size: clamp(2.2rem, 5vw, 4.25rem);
+    max-width: 20ch;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.55), 0 4px 28px rgba(0,0,0,0.6);
+  }
+  .hero-title .stark{
+    color: var(--paper);
+    display:block;
+  }
+  .hero-rule{
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--toxic), var(--rust));
+    margin: 24px 0 16px;
+    border: none;
+  }
+  .hero-sub{
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.65;
+    color: rgba(239,231,216,0.95);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+    max-width: 52ch;
+    margin: 0;
+  }
+  .hero-cta{
+    display:inline-flex;
+    align-items:center;
+    gap: 10px;
+    align-self: flex-start;
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--toxic);
+    padding: 13px 22px;
+    border-radius: 3px;
+    text-decoration:none;
+    transition: transform .15s ease, background .15s ease;
+  }
+  .hero-cta:hover{ background: #b3cc2e; transform: translateY(-1px); }
+  .hero-cta:focus-visible{ outline: 2px solid var(--paper); outline-offset: 3px; }
+
+  /* ---------- Content page ---------- */
+  section#land-pollution{
+    background: rgba(18,19,12,0.35);
+    padding: 76px 5vw 100px;
+  }
+  /* The report sits on a paper panel so it stays easy to read over the photo */
+  .content-wrap{
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 56px clamp(20px, 6vw, 60px) 64px;
+    background: var(--paper);
+    border-radius: 3px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+  }
+  h1.page-title{
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(2rem, 4vw, 2.7rem);
+    margin: 0 0 28px;
+    line-height: 1.12;
+  }
+  .toc{
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--toxic);
+    background: var(--paper-2);
+    padding: 18px 22px;
+    margin: 0 0 48px;
+    border-radius: 2px;
+  }
+  .toc-label{
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ash);
+    margin: 0 0 10px;
+  }
+  .toc ol{
+    margin:0; padding-left: 20px;
+    font-family: var(--sans);
+    font-size: 14.5px;
+    line-height: 1.9;
+  }
+  .toc a{ color: var(--soil); text-decoration: none; border-bottom: 1px solid transparent; }
+  .toc a:hover{ border-bottom-color: var(--rust); color: var(--rust); }
+
+  article p{
+    font-family: var(--serif);
+    font-size: 17.5px;
+    line-height: 1.72;
+    color: var(--ink);
+    margin: 0 0 22px;
+  }
+  article h2{
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin: 52px 0 18px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+  }
+  article h2:first-of-type{ margin-top: 0; padding-top: 0; border-top: none; }
+  article h3{
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 15.5px;
+    color: var(--soil);
+    margin: 26px 0 8px;
+  }
+  article ul{
+    margin: 0 0 24px;
+    padding-left: 20px;
+    font-family: var(--sans);
+    font-size: 15.5px;
+    line-height: 1.85;
+    color: var(--ink);
+  }
+  article li{ margin-bottom: 4px; }
+  .cite{
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ash);
+  }
+
+  /* stat row */
+  .stat-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin: 8px 0 40px;
+  }
+  .stat{
+    background: var(--paper);
+    padding: 22px 18px;
+  }
+  .stat .num{
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    color: var(--rust);
+    display:block;
+    line-height: 1.1;
+  }
+  .stat .label{
+    font-family: var(--sans);
+    font-size: 12.5px;
+    color: var(--soil);
+    margin-top: 6px;
+    display:block;
+    line-height: 1.4;
+  }
+
+  /* ---------- Regional ranking chart ---------- */
+  .region-chart{
+    margin: 18px 0 14px;
+    padding: 22px 22px 16px;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+  }
+  .region-chart figcaption{
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ash);
+    margin-top: 14px;
+    line-height: 1.5;
+  }
+  .region-list{
+    list-style: none;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .region-row{
+    display: grid;
+    grid-template-columns: 1.6rem minmax(0, 1fr);
+    column-gap: 10px;
+    margin-bottom: 16px !important;
+  }
+  .region-rank{
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.35rem;
+    line-height: 1;
+    color: var(--rust);
+    padding-top: 2px;
+  }
+  .region-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    font-family: var(--sans);
+    font-size: 14.5px;
+    line-height: 1.35;
+    margin-bottom: 6px;
+  }
+  .region-name{ font-weight: 600; color: var(--ink); }
+  .region-name small{ font-weight: 400; color: var(--ash); font-size: 12.5px; }
+  .region-value{
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--soil);
+    white-space: nowrap;
+  }
+  .region-value span{ font-family: var(--sans); font-size: 12px; color: var(--ash); font-weight: 400; }
+  .bar{
+    height: 12px;
+    background: rgba(27,28,21,0.08);
+    border-radius: 1px;
+    overflow: hidden;
+  }
+  .bar i{
+    display: block;
+    height: 100%;
+    width: var(--w);
+    background: linear-gradient(90deg, var(--soil), var(--rust));
+  }
+  .region-row:first-child .bar i{ background: linear-gradient(90deg, var(--rust), #7d3515); }
+
+  .growth-row{ grid-template-columns: minmax(0, 1fr); }
+  .growth-row .region-rank{ display: none; }
+  .growth-row.bad .bar i{ background: linear-gradient(90deg, var(--rust), #7d3515); }
+  .growth-row:not(.bad) .bar i{ background: linear-gradient(90deg, #6f8214, var(--toxic)); }
+  .growth-row .region-value{ font-size: 17px; }
+  .growth-row.bad .region-value{ color: var(--rust); }
+
+  .update-note{
+    border-left: 3px solid var(--toxic);
+    background: rgba(159,183,28,0.10);
+    padding: 16px 20px;
+    margin: 22px 0 30px;
+  }
+  .update-note p{ margin: 0; font-size: 16.5px; }
+
+  /* ---------- Video ---------- */
+  .video-frame{
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #14150F;
+    border: 1px solid var(--line);
+    margin: 8px 0 10px;
+  }
+  .video-frame iframe{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .video-link{
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ash);
+    margin: 0 0 20px;
+  }
+  .video-link a{ color: var(--soil); }
+
+  /* references */
+  .refs{
+    margin-top: 60px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line);
+  }
+  .refs h2{ margin-top: 0; padding-top: 0; border-top: none; }
+  .refs ol{
+    padding-left: 20px;
+    font-family: var(--sans);
+    font-size: 13.5px;
+    line-height: 1.9;
+    color: var(--ash);
+  }
+  .refs a{ color: var(--soil); }
+
+  footer{
+    text-align:center;
+    font-family: var(--sans);
+    font-size: 12.5px;
+    color: rgba(239,231,216,0.85);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+    padding: 0 8vw 46px;
+    background: rgba(18,19,12,0.35);
+  }
+
+  @media (max-width: 640px){
+    section#home{
+      padding: 56px 6vw 44px;
+      min-height: 55vh;
+      background: linear-gradient(180deg, rgba(18,19,12,0.45) 0%, rgba(18,19,12,0.70) 100%);
+    }
+    body::before{ background-position: 70% center; }
+    section#land-pollution{ padding: 40px 3vw 60px; }
+    .content-wrap{ padding: 36px 18px 44px; }
+    .region-chart{ padding: 18px 14px 12px; }
+    .region-head{ flex-direction: column; gap: 2px; }
+  }
+  /* ---------- Page navigation ---------- */
+  .site-nav{
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 20;
+    padding: 10px calc(8vw - 12px);
+    background: rgba(18,19,12,0.94);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(159,183,28,0.35);
+  }
+  .nav-list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 10px;
+  }
+  .nav-item{ position: relative; }
+  .nav-top{ display: flex; align-items: center; }
+  .nav-link{
+    font-family: var(--display);
+    font-size: 15px;
+    letter-spacing: 0.03em;
+    color: rgba(234,231,214,0.85);
+    text-decoration: none;
+    padding: 8px 6px 8px 12px;
+    border-bottom: 2px solid transparent;
+  }
+  .nav-item:not(.has-sub) .nav-link{ padding-right: 12px; }
+  .nav-link:hover{ color: var(--paper); }
+  .nav-link[aria-current="page"]{ color: var(--toxic); border-bottom-color: var(--toxic); }
+  .nav-toggle{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    margin-right: 4px;
+    padding: 0;
+    border: 0;
+    border-radius: 2px;
+    background: transparent;
+    color: rgba(234,231,214,0.75);
+    cursor: pointer;
+  }
+  .nav-toggle:hover{ color: var(--paper); background: rgba(234,231,214,0.08); }
+  .nav-toggle svg{ transition: transform .15s ease; }
+  .nav-item.open .nav-toggle svg{ transform: rotate(180deg); }
+  .site-nav a:focus-visible, .nav-toggle:focus-visible{ outline: 2px solid var(--toxic); outline-offset: 2px; }
+
+  .nav-sub{
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 280px;
+    margin: 0;
+    padding: 8px 0;
+    list-style: none;
+    background: var(--paper);
+    border-top: 3px solid var(--toxic);
+    border-radius: 0 0 3px 3px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+  }
+  .nav-item.open .nav-sub{ display: block; }
+  @media (hover: hover){
+    .nav-item.has-sub:hover .nav-sub{ display: block; }
+  }
+  .nav-sub a{
+    display: block;
+    padding: 9px 18px;
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.35;
+    color: var(--soil);
+    text-decoration: none;
+  }
+  .nav-sub a:hover{ background: var(--paper-2); color: var(--rust); }
+  .nav-subitem a{ padding-left: 34px; font-size: 13.5px; color: var(--ash); }
+
+  .next-page{
+    margin: 48px 0 0;
+    font-family: var(--sans);
+    font-size: 15px;
+  }
+  .next-page a{ color: var(--rust); font-weight: 600; }
+  @media (max-width: 640px){
+    html{ scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 100px); }
+    .site-nav{ padding: 6px calc(6vw - 8px); }
+    .nav-list{ gap: 2px 0; }
+    .nav-link{ font-size: 13.5px; letter-spacing: 0.01em; padding: 8px 2px 8px 6px; }
+    .nav-item:not(.has-sub) .nav-link{ padding-right: 6px; }
+    .nav-toggle{ width: 24px; margin-right: 2px; }
+    .nav-item{ position: static; }
+    .nav-sub{ left: 3vw; right: 3vw; min-width: 0; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav" aria-label="Pages">
+  <ul class="nav-list">
+    <li class="nav-item has-sub">
+      <div class="nav-top">
+        <a class="nav-link" href="index.html">What is the Issue?</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="sub-issue" aria-label="Show sections: What is the Issue?"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <ul class="nav-sub" id="sub-issue">
+        <li><a href="index.html#definition">What is Land Pollution?</a></li>
+        <li><a href="index.html#causes">Causes of Land Pollution</a></li>
+        <li><a href="index.html#effects">Effects of Land Pollution</a></li>
+        <li><a href="index.html#status">Current Status</a></li>
+        <li><a href="index.html#regions">Top 5 Waste-Generating Regions</a></li>
+        <li><a href="index.html#video">Watch the Video</a></li>
+      </ul>
+    </li>
+    <li class="nav-item has-sub">
+      <div class="nav-top">
+        <a class="nav-link" href="what-to-do.html">What to do?</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="sub-todo" aria-label="Show sections: What to do?"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <ul class="nav-sub" id="sub-todo">
+        <li><a href="what-to-do.html#solutions">Existing Solutions</a></li>
+        <li class="nav-subitem"><a href="what-to-do.html#ra9003">Republic Act No. 9003</a></li>
+        <li class="nav-subitem"><a href="what-to-do.html#mrf">Materials Recovery Facilities</a></li>
+        <li class="nav-subitem"><a href="what-to-do.html#plans">Ten-Year Solid-Waste Management Plans</a></li>
+        <li><a href="what-to-do.html#album">Solutions on the Ground (Videos)</a></li>
+        <li><a href="what-to-do.html#effectiveness">How Effective and Sustainable Are These Solutions?</a></li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <div class="nav-top">
+        <a class="nav-link" href="what-now.html">What Now?</a>
+      </div>
+    </li>
+    <li class="nav-item has-sub">
+      <div class="nav-top">
+        <a class="nav-link" href="glossary.html" aria-current="page">Glossary</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="sub-gloss" aria-label="Show sections: Glossary"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <ul class="nav-sub" id="sub-gloss">
+        <li><a href="#terms-issue">What is the Issue?</a></li>
+        <li><a href="#terms-todo">What to do?</a></li>
+        <li><a href="#terms-now">What Now?</a></li>
+      </ul>
+    </li>
+    <li class="nav-item has-sub">
+      <div class="nav-top">
+        <a class="nav-link" href="references.html">References</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="sub-refs" aria-label="Show sections: References"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <ul class="nav-sub" id="sub-refs">
+        <li><a href="references.html#refs-issue">What is the Issue?</a></li>
+        <li><a href="references.html#refs-todo">What to do?</a></li>
+        <li><a href="references.html#refs-now">What Now?</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+<section id="home">
+  <p class="hero-eyebrow">Glossary</p>
+  <h1 class="hero-title">
+    <span class="stark">Talasalitaan</span>
+  </h1>
+  <hr class="hero-rule">
+  <p class="hero-sub">The words behind the issue, explained simply.</p>
+</section>
+
+<section id="land-pollution">
+  <div class="content-wrap">
+    <h1 class="page-title">Glossary</h1>
+    <article>
+      <p class="page-intro">Some words on this site are technical, legal, or in Filipino. This glossary explains them in plain language, grouped by the page where they appear.</p>
+
+      <h2 id="terms-issue">What is the Issue?</h2>
+      <p class="group-note">Words from the <a href="index.html">What is the Issue?</a> page</p>
+      <dl class="gloss">
+        <div><dt>Lupang Hinirang <i>(Filipino: “chosen land”)</i></dt><dd>The official title and opening words of the Philippine national anthem, which describes the country as a land chosen and loved by its people. This site borrows it to show what is at stake.</dd></div>
+        <div><dt>Nilalason <i>(Filipino: “being poisoned”)</i></dt><dd>Describes something that is slowly being poisoned. Used in this site’s title for land harmed by pollution.</dd></div>
+        <div><dt>Land pollution</dt><dd>The contamination or degradation of land and soil by waste, chemicals, or other harmful materials.</dd></div>
+        <div><dt>Soil degradation</dt><dd>A decline in soil quality, so it can no longer grow plants, store and filter water, or cycle nutrients as well as healthy soil.</dd></div>
+        <div><dt>Contaminant</dt><dd>Any substance that makes land, water, or air harmful or unfit for use, such as chemicals, oil, or heavy metals.</dd></div>
+        <div><dt>Heavy metals</dt><dd>Metals such as lead, mercury, and cadmium that are toxic even in small amounts. They can stay in soil for a long time and be absorbed by crops.</dd></div>
+        <div><dt>Agrochemicals</dt><dd>Chemicals used in farming, mainly pesticides and fertilisers. Too much or the wrong use can pollute soil and water.</dd></div>
+        <div><dt>Mine tailings</dt><dd>The crushed rock and processing waste left over after valuable minerals are taken out in mining. They may contain toxic chemicals.</dd></div>
+        <div><dt>Hazardous waste</dt><dd>Waste that can harm people or the environment because it is toxic, flammable, corrosive, or reactive, such as used oil and industrial chemicals.</dd></div>
+        <div><dt>Solid waste</dt><dd>Everyday discarded materials from homes, businesses, markets, and institutions, commonly called garbage or trash.</dd></div>
+        <div><dt>Unsegregated waste</dt><dd>Garbage that has been thrown out mixed together instead of being sorted into biodegradable, recyclable, residual, and special waste.</dd></div>
+        <div><dt>Open dumping</dt><dd>Throwing garbage on land without any controls to protect soil, water, and air. It is prohibited under Republic Act No. 9003.</dd></div>
+        <div><dt>Open burning</dt><dd>Burning garbage in the open air. It releases harmful smoke and is prohibited under Republic Act No. 9003.</dd></div>
+        <div><dt>Groundwater</dt><dd>Water stored underground in soil and rock. Many wells draw from it, so polluted soil can contaminate drinking water.</dd></div>
+        <div><dt>Biodiversity</dt><dd>The variety of living things in an area, including plants, animals, and microorganisms.</dd></div>
+        <div><dt>Projection</dt><dd>An estimate of a future number based on current data and trends, such as the projected amount of waste for 2025.</dd></div>
+        <div><dt>LGU (local government unit)</dt><dd>A province, city, municipality, or barangay. LGUs are responsible for collecting and managing waste in their area.</dd></div>
+        <div><dt>Barangay</dt><dd>The smallest unit of local government in the Philippines, similar to a village or district.</dd></div>
+        <div><dt>DENR-EMB</dt><dd>The Environmental Management Bureau of the Department of Environment and Natural Resources, the national office in charge of pollution control and solid waste management.</dd></div>
+        <div><dt>PSA</dt><dd>The Philippine Statistics Authority, the government agency that collects and publishes official statistics, including environment data.</dd></div>
+      </dl>
+
+      <h2 id="terms-todo">What to do?</h2>
+      <p class="group-note">Words from the <a href="what-to-do.html">What to do?</a> page</p>
+      <dl class="gloss">
+        <div><dt>Iingatan <i>(Filipino: “will be protected”)</i></dt><dd>Describes something that will be cared for and protected. Used in the title of the What to do? page.</dd></div>
+        <div><dt>Republic Act No. 9003</dt><dd>The Ecological Solid Waste Management Act of 2000, the main Philippine law on solid waste. It requires segregation, recycling, and composting, and bans open dumping and open burning.</dd></div>
+        <div><dt>Segregation at source</dt><dd>Sorting waste where it is produced, such as in the home, school, or office, before it is collected.</dd></div>
+        <div><dt>Biodegradable waste <i>(also called compostable waste)</i></dt><dd>Waste that breaks down naturally, such as food scraps, fruit peels, and garden waste. It can be turned into compost.</dd></div>
+        <div><dt>Recyclable waste</dt><dd>Discarded materials that can be processed and made into new products, such as paper, cardboard, some plastics, glass, and metal cans.</dd></div>
+        <div><dt>Residual waste</dt><dd>Waste that can be neither recycled nor composted, such as used diapers and some plastic wrappers. It is the only kind that should go to a landfill.</dd></div>
+        <div><dt>Special waste</dt><dd>Household waste that needs special handling because it may be harmful, such as used batteries, paint, bulbs, and old electronics.</dd></div>
+        <div><dt>Materials recovery facility (MRF)</dt><dd>A place where collected waste is sorted. Under RA 9003, it includes a sorting station, drop-off center, composting area, and recycling area.</dd></div>
+        <div><dt>Composting</dt><dd>Turning biodegradable waste into compost, a natural soil conditioner, by letting it decompose under controlled conditions.</dd></div>
+        <div><dt>Sanitary landfill</dt><dd>A disposal site designed and run to keep waste from polluting soil, water, and air, for example with liners and covers. It replaces open dumpsites.</dd></div>
+        <div><dt>Waste diversion</dt><dd>Keeping waste out of landfills and dumpsites by reusing, recycling, or composting it. RA 9003 set a diversion target of at least 25% within five years.</dd></div>
+        <div><dt>National Solid Waste Management Commission (NSWMC)</dt><dd>The national body created by RA 9003 to oversee solid waste management and approve the waste plans of LGUs.</dd></div>
+        <div><dt>Ten-year solid waste management plan</dt><dd>A long-term plan every province, city, and municipality must prepare under RA 9003, setting targets for segregation, collection, recycling, and disposal.</dd></div>
+        <div><dt>Local solid waste management board</dt><dd>A group formed in each LGU to prepare and carry out its waste plan.</dd></div>
+        <div><dt>Zero waste</dt><dd>An approach that aims to reduce waste as much as possible and to reuse, recycle, or compost what is left, so almost nothing is dumped or burned.</dd></div>
+        <div><dt>Reuse and refill</dt><dd>A system where containers are used again instead of thrown away, for example buying soap or cooking oil in your own bottle at a refill store.</dd></div>
+        <div><dt>Junk shop</dt><dd>A local business that buys recyclable materials such as paper, bottles, and scrap metal and sells them to recyclers.</dd></div>
+      </dl>
+
+      <h2 id="terms-now">What Now?</h2>
+      <p class="group-note">Words from the <a href="what-now.html">What Now?</a> page</p>
+      <dl class="gloss">
+        <div><dt>Simulan Natin <i>(Filipino: “let’s start”)</i></dt><dd>A call to begin acting together. Used in the title of the What Now? page.</dd></div>
+        <div><dt>Segregated collection</dt><dd>Collecting sorted waste separately, often on different days for each type, so that it is not mixed again in the garbage truck.</dd></div>
+        <div><dt>Clean-up drive</dt><dd>An organized activity where residents, students, or volunteers collect litter and dumped garbage from streets, creeks, and public areas.</dd></div>
+        <div><dt>Enforcement</dt><dd>Making sure laws are followed, for example by inspecting, warning, and fining people who litter or dump waste.</dd></div>
+        <div><dt>Ordinance</dt><dd>A local law passed by the council of a barangay, city, municipality, or province, such as a rule on segregation or plastic use.</dd></div>
+        <div><dt>Public reporting</dt><dd>When government offices regularly share their data and results with the public, so people can check whether programs are working.</dd></div>
+      </dl>
+
+      <p class="next-page">Next: <a href="references.html">References</a></p>
+    </article>
+  </div>
+</section>
+
+<footer>For project purpose only</footer>
+
+<script>
+  (function(){
+    var items = document.querySelectorAll('.nav-item.has-sub');
+    function closeAll(except){
+      items.forEach(function(it){
+        if(it !== except){
+          it.classList.remove('open');
+          it.querySelector('.nav-toggle').setAttribute('aria-expanded','false');
+        }
+      });
+    }
+    items.forEach(function(it){
+      var btn = it.querySelector('.nav-toggle');
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        var open = !it.classList.contains('open');
+        closeAll(it);
+        it.classList.toggle('open', open);
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      it.querySelectorAll('.nav-sub a').forEach(function(a){
+        a.addEventListener('click', function(){ closeAll(); });
+      });
+    });
+    document.addEventListener('click', function(e){
+      if(!e.target.closest('.site-nav')) closeAll();
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape'){
+        var open = document.querySelector('.nav-item.open');
+        if(open){ closeAll(); open.querySelector('.nav-toggle').focus(); }
+      }
+    });
+  })();
+</script>
+</body>
+</html>
