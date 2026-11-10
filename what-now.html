@@ -1074,10 +1074,24 @@
         <li><a href="what-to-do.html#effectiveness">How Effective and Sustainable Are These Solutions?</a></li>
       </ul>
     </li>
-    <li class="nav-item">
+    <li class="nav-item has-sub">
       <div class="nav-top">
         <a class="nav-link" href="what-now.html" aria-current="page">What Now?</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="sub-now" aria-label="Show sections: What Now?"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       </div>
+      <ul class="nav-sub" id="sub-now">
+        <li><a href="#goals">Why This Page Exists</a></li>
+        <li><a href="#learned">What We Learned</a></li>
+        <li class="nav-subitem"><a href="#numbers">What the Numbers Told Us</a></li>
+        <li class="nav-subitem"><a href="#infographic">Out of Every 100 Kilos</a></li>
+        <li class="nav-subitem"><a href="#seen-before">We Have Seen This Before</a></li>
+        <li><a href="#actions">What You Can Do: Ako, Tayo, Sila</a></li>
+        <li><a href="#watch">Watch, Read, Share</a></li>
+        <li class="nav-subitem"><a href="#reel">The Reel</a></li>
+        <li class="nav-subitem"><a href="#videos">Shared Videos</a></li>
+        <li class="nav-subitem"><a href="#reads">Shared Reads</a></li>
+        <li><a href="#pledge">Take the Pledge</a></li>
+      </ul>
     </li>
     <li class="nav-item has-sub">
       <div class="nav-top">
@@ -1166,7 +1180,7 @@
     <!-- ===================== 2. LEARNED ===================== -->
     <div class="feed-head"><h2 id="learned">What We Learned</h2></div>
 
-    <article class="post" aria-labelledby="p-numbers">
+    <article class="post" id="numbers" aria-labelledby="p-numbers">
       <header class="post-head">
         <img class="avatar" src="land-pollution-favicon.png" alt="" width="44" height="44">
         <div class="post-meta"><span class="post-name">Lupang Iingatan</span><span class="post-type"><svg aria-hidden="true" width="13" height="13" viewBox="0 0 14 14"><path d="M2 11.2V13h1.8l6.6-6.6-1.8-1.8zM12.6 4.2a.9.9 0 000-1.3l-1.5-1.5a.9.9 0 00-1.3 0L8.7 2.5l1.8 1.8z" fill="currentColor"/></svg>Blog</span></div>
@@ -1188,7 +1202,7 @@
       </div>
     </article>
 
-    <article class="post" aria-labelledby="p-100kg">
+    <article class="post" id="infographic" aria-labelledby="p-100kg">
       <header class="post-head">
         <img class="avatar" src="land-pollution-favicon.png" alt="" width="44" height="44">
         <div class="post-meta"><span class="post-name">Lupang Iingatan</span><span class="post-type"><svg aria-hidden="true" width="13" height="13" viewBox="0 0 14 14"><path d="M2 12.5h11M3.5 10V6.5M6.5 10V3M9.5 10V5M12 10V8" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>Infographic</span></div>
@@ -1208,7 +1222,7 @@
       <p>If every home sorted, 8 of every 10 kilos would never need a landfill. That is the cheapest landfill space there is: the space we never fill.</p>
     </article>
 
-    <article class="post" aria-labelledby="p-before">
+    <article class="post" id="seen-before" aria-labelledby="p-before">
       <header class="post-head">
         <img class="avatar" src="land-pollution-favicon.png" alt="" width="44" height="44">
         <div class="post-meta"><span class="post-name">Lupang Iingatan</span><span class="post-type"><svg aria-hidden="true" width="13" height="13" viewBox="0 0 14 14"><rect x="1.5" y="3" width="11" height="8.5" rx="1" stroke="currentColor" stroke-width="1.4" fill="none"/><circle cx="7" cy="7.2" r="2" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>Photo and news</span></div>
@@ -1233,7 +1247,7 @@
     <!-- ===================== 3. ACTIONS ===================== -->
     <div class="feed-head"><h2 id="actions">What You Can Do</h2></div>
 
-    <article class="post" aria-labelledby="p-ats">
+    <article class="post" id="ako-tayo-sila" aria-labelledby="p-ats">
       <header class="post-head">
         <img class="avatar" src="land-pollution-favicon.png" alt="" width="44" height="44">
         <div class="post-meta"><span class="post-name">Lupang Iingatan</span><span class="post-type"><svg aria-hidden="true" width="13" height="13" viewBox="0 0 14 14"><path d="M5 3.5h7.5M5 7h7.5M5 10.5h7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="2.2" cy="3.5" r="1" fill="currentColor"/><circle cx="2.2" cy="7" r="1" fill="currentColor"/><circle cx="2.2" cy="10.5" r="1" fill="currentColor"/></svg>Guide</span></div>
@@ -1283,7 +1297,7 @@
     <!-- ===================== 4. WATCH / READ ===================== -->
     <div class="feed-head"><h2 id="watch">Watch, Read, Share</h2></div>
 
-    <article class="post" aria-labelledby="p-reel">
+    <article class="post" id="reel" aria-labelledby="p-reel">
       <header class="post-head">
         <img class="avatar" src="land-pollution-favicon.png" alt="" width="44" height="44">
         <div class="post-meta"><span class="post-name">Lupang Iingatan</span><span class="post-type"><svg aria-hidden="true" width="13" height="13" viewBox="0 0 14 14"><rect x="3" y="1" width="8" height="12" rx="1.6" stroke="currentColor" stroke-width="1.4" fill="none"/><path d="M6 5.2v3.6L9 7z" fill="currentColor"/></svg>Reel</span></div>
@@ -1339,7 +1353,7 @@
       <p class="tags">#LupangIingatan #SimulanNatin</p>
     </article>
 
-    <article class="post" aria-labelledby="p-fao">
+    <article class="post" id="videos" aria-labelledby="p-fao">
       <header class="post-head">
         <img class="avatar" src="land-pollution-favicon.png" alt="" width="44" height="44">
         <div class="post-meta"><span class="post-name">Lupang Iingatan</span><span class="post-type"><svg aria-hidden="true" width="13" height="13" viewBox="0 0 14 14"><path d="M8 2.5l4 3.5-4 3.5V7.6C5 7.6 3.2 8.6 2 11c.4-3.4 2.3-5.4 6-5.8z" fill="currentColor"/></svg>Shared video</span></div>
@@ -1375,7 +1389,7 @@
       <p class="video-link">Video: WWF-Philippines, <i>Kwentong Kompost</i> · <a href="https://www.youtube.com/watch?v=kBDV20RurvQ" target="_blank" rel="noopener">Watch on YouTube</a></p>
     </article>
 
-    <article class="post" aria-labelledby="p-reads">
+    <article class="post" id="reads" aria-labelledby="p-reads">
       <header class="post-head">
         <img class="avatar" src="land-pollution-favicon.png" alt="" width="44" height="44">
         <div class="post-meta"><span class="post-name">Lupang Iingatan</span><span class="post-type"><svg aria-hidden="true" width="13" height="13" viewBox="0 0 14 14"><path d="M6 8a2.5 2.5 0 003.5 0l2-2a2.5 2.5 0 00-3.5-3.5l-.6.6M8 6a2.5 2.5 0 00-3.5 0l-2 2A2.5 2.5 0 006 11.5l.6-.6" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>Shared reads</span></div>
