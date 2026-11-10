@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>What Now? | Lupang Iingatan... Simulan Natin</title>
+<meta name="description" content="Our goals, conclusions, and courses of action for fighting land pollution in the Philippines, with a reel, videos, and a pledge you can share.">
 <link rel="icon" type="image/png" href="land-pollution-favicon.png">
 <link rel="apple-touch-icon" href="land-pollution-favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,93 +56,543 @@
     pointer-events: none;
   }
 
-  /* ---------- Coming soon (What Now?) ---------- */
-  .soon{
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 52px clamp(22px, 6vw, 56px) 56px;
+  /* ---------- What Now?: the advocacy feed ---------- */
+  .content-wrap.intro-wrap{ max-width: 760px; padding-bottom: 40px; }
+  .intro-wrap .page-title{ margin-bottom: 16px; }
+  .intro-wrap .lead{
+    font-family: var(--serif);
+    font-size: 17.5px;
+    line-height: 1.72;
+    margin: 0 0 26px;
+  }
+  .intro-wrap .toc{ margin-bottom: 0; }
+
+  .feed{ max-width: 760px; margin: 0 auto; }
+  .feed-head{ margin: 56px 0 18px; }
+  .feed-head h2{
+    display: inline-block;
+    margin: 0;
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(1.35rem, 3vw, 1.7rem);
+    line-height: 1.2;
+    color: var(--paper);
+    background: rgba(18,19,12,0.9);
+    border-left: 4px solid var(--toxic);
+    border-radius: 2px;
+    padding: 10px 18px 11px;
+  }
+
+  /* A post */
+  .post{
     background: var(--paper);
     border-radius: 3px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+    padding: 24px clamp(18px, 5vw, 42px) 30px;
+    margin: 0 0 22px;
     position: relative;
     overflow: hidden;
   }
-  .soon::before{
+  .post.pinned{ padding-top: 34px; }
+  .post.pinned::before{
     content: "";
     position: absolute;
     left: 0; right: 0; top: 0;
     height: 8px;
     background: repeating-linear-gradient(-45deg, var(--toxic) 0 18px, #14150F 18px 36px);
   }
-  .soon-tag{
-    display: inline-block;
-    font-family: var(--display);
-    font-size: 14px;
-    letter-spacing: 0.04em;
-    color: var(--ink);
-    background: var(--toxic);
-    padding: 5px 12px;
-    border-radius: 2px;
-    margin: 0 0 22px;
-  }
-  .soon h1{
-    font-family: var(--serif);
-    font-weight: 700;
-    font-size: clamp(1.9rem, 4vw, 2.5rem);
-    line-height: 1.12;
-    margin: 0 0 16px;
-    color: var(--ink);
-  }
-  .soon p{
-    font-family: var(--serif);
-    font-size: 17.5px;
-    line-height: 1.7;
-    color: var(--ink);
+  .post-head{
+    display: flex;
+    align-items: center;
+    gap: 12px;
     margin: 0 0 18px;
   }
-  .soon-list{
-    list-style: none;
-    margin: 26px 0 34px;
-    padding: 0;
-    border-top: 1px solid var(--line);
+  .avatar{
+    width: 44px;
+    height: 44px;
+    flex: none;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #14150F;
+    border: 2px solid var(--toxic);
   }
-  .soon-list li{
-    display: grid;
-    grid-template-columns: 7.5rem minmax(0, 1fr);
-    gap: 14px;
-    padding: 14px 0;
-    border-bottom: 1px solid var(--line);
+  .post-meta{ display: flex; flex-direction: column; line-height: 1.3; }
+  .post-name{ font-family: var(--sans); font-weight: 600; font-size: 15px; color: var(--ink); }
+  .post-type{
     font-family: var(--sans);
-    font-size: 15px;
-    line-height: 1.5;
+    font-size: 12.5px;
+    color: var(--ash);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .post-type svg{ color: var(--rust); }
+
+  .post h3{
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(1.3rem, 3vw, 1.6rem);
+    line-height: 1.2;
     color: var(--ink);
+    margin: 0 0 14px;
   }
-  .soon-list b{
-    font-family: var(--display);
+  .post h4{
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 15.5px;
+    line-height: 1.4;
+    color: var(--soil);
+    margin: 24px 0 6px;
+  }
+  .post p{ font-size: 17px; line-height: 1.7; margin: 0 0 16px; }
+  .post p.tags{
+    font-family: var(--sans);
+    font-size: 13.5px;
     font-weight: 500;
-    font-size: 15px;
     color: var(--rust);
+    margin: 20px 0 0;
   }
-  .soon-links{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
+  .post .update-note{ margin: 22px 0 6px; }
+  .post p a:not(.btn), .do-list a{ color: var(--soil); text-decoration-color: rgba(63,61,38,0.45); text-underline-offset: 2px; }
+  .post p a:not(.btn):hover, .do-list a:hover{ color: var(--rust); }
+
+  .stand-list{ list-style: none; padding: 0 !important; margin: 4px 0 8px !important; }
+  .stand-list li{
+    position: relative;
+    padding: 0 0 0 26px;
+    margin: 0 0 10px;
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.6;
   }
-  .soon-links a{
+  .stand-list li::before{
+    content: "";
+    position: absolute;
+    left: 2px; top: 0.55em;
+    width: 11px; height: 11px;
+    background: var(--toxic);
+    border: 1.5px solid var(--soil);
+    border-radius: 1px;
+  }
+
+  .post-actions{ display: flex; flex-wrap: wrap; gap: 10px; margin: 22px 0 0; }
+  .btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     font-family: var(--sans);
     font-size: 14px;
     font-weight: 500;
+    line-height: 1.2;
     text-decoration: none;
     padding: 11px 18px;
     border-radius: 3px;
     border: 1.5px solid var(--soil);
+    background: transparent;
     color: var(--soil);
+    cursor: pointer;
   }
-  .soon-links a.primary{ background: var(--soil); color: var(--paper); }
-  .soon-links a:hover{ background: var(--rust); border-color: var(--rust); color: var(--paper); }
-  .soon-links a:focus-visible{ outline: 2px solid var(--rust); outline-offset: 3px; }
+  .btn.primary{ background: var(--soil); color: var(--paper); }
+  .btn:hover{ background: var(--rust); border-color: var(--rust); color: var(--paper); }
+  .btn:focus-visible{ outline: 2px solid var(--rust); outline-offset: 3px; }
+  .post .status{
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--soil);
+    min-height: 1.4em;
+    margin: 10px 0 0;
+  }
+
+  /* ---------- Infographic: 100 kilos ---------- */
+  .waffle{
+    display: grid;
+    grid-template-columns: minmax(0, 290px) minmax(0, 1fr);
+    gap: 28px;
+    align-items: center;
+    margin: 18px 0 8px;
+    padding: 22px;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+  }
+  .waffle svg{ width: 100%; height: auto; display: block; }
+  .waffle-legend{ list-style: none; margin: 0 !important; padding: 0 !important; }
+  .waffle-legend li{
+    display: grid;
+    grid-template-columns: 3.4rem minmax(0, 1fr);
+    column-gap: 12px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--line);
+    margin: 0 !important;
+  }
+  .waffle-legend li:last-child{ border-bottom: none; }
+  .waffle-legend .kg{
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.9rem;
+    line-height: 1;
+    color: var(--c);
+  }
+  .waffle-legend .kind{
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 14.5px;
+    line-height: 1.3;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .waffle-legend .kind::before{
+    content: "";
+    width: 11px; height: 11px;
+    border-radius: 2px;
+    background: var(--c);
+    flex: none;
+  }
+  .waffle-legend .what{
+    font-family: var(--sans);
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--ash);
+    grid-column: 2;
+  }
+  .waffle-legend .what b{ color: var(--soil); font-weight: 600; }
+  .post .fig-note{
+    font-family: var(--sans);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ash);
+    margin: 10px 0 18px;
+  }
+
+  /* ---------- Photo and timeline ---------- */
+  .photo{ margin: 4px 0 20px; }
+  .photo img{
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    background: #14150F;
+    border: 1px solid var(--line);
+  }
+  .photo figcaption{ font-family: var(--sans); font-size: 13px; line-height: 1.5; color: var(--ash); margin-top: 8px; }
+  .photo figcaption a{ color: var(--soil); }
+  .photo .photo-fallback{ display: none; }
+  .photo.img-missing img{ display: none; }
+  .photo.img-missing .photo-fallback{
+    display: block;
+    padding: 18px;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    font-family: var(--sans);
+    font-size: 14px;
+  }
+
+  .timeline{ list-style: none; margin: 0 0 18px !important; padding: 0 !important; border-left: 2px solid var(--rust); }
+  .timeline li{ position: relative; padding: 0 0 18px 22px; margin: 0 !important; }
+  .timeline li::before{
+    content: "";
+    position: absolute;
+    left: -7px; top: 5px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 2px solid var(--rust);
+  }
+  .timeline time{
+    display: block;
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 0.02em;
+    color: var(--rust);
+    margin-bottom: 2px;
+  }
+  .post .timeline p{ margin: 0; font-size: 16.5px; }
+
+  /* ---------- Ako, Tayo, Sila ---------- */
+  .tier{
+    display: grid;
+    grid-template-columns: 8.5rem minmax(0, 1fr);
+    gap: 4px 24px;
+    padding: 24px 0 6px;
+    border-top: 1px solid var(--line);
+  }
+  .tier:first-of-type{ margin-top: 10px; }
+  .post .tier-name{
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 2.5rem;
+    line-height: 1;
+    color: var(--tc);
+    margin: 0;
+  }
+  .post .tier-name span{
+    display: block;
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.35;
+    color: var(--ash);
+    margin-top: 6px;
+  }
+  .post .tier-note{ font-family: var(--sans); font-size: 14.5px; line-height: 1.5; color: var(--soil); margin: 0 0 10px; }
+  .do-list{ list-style: none; margin: 0 0 14px !important; padding: 0 !important; }
+  .do-list li{
+    position: relative;
+    padding: 0 0 0 30px;
+    margin: 0 0 14px !important;
+    font-family: var(--sans);
+    font-size: 15.5px;
+    line-height: 1.62;
+    color: var(--ink);
+  }
+  .do-list li::before{
+    content: "";
+    position: absolute;
+    left: 0; top: 4px;
+    width: 16px; height: 16px;
+    border: 2px solid var(--tc);
+    border-radius: 2px;
+  }
+  .do-list li::after{
+    content: "";
+    position: absolute;
+    left: 5px; top: 6px;
+    width: 5px; height: 9px;
+    border: solid var(--tc);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  .do-list b{ font-weight: 600; color: var(--ink); }
+
+  /* ---------- Reel ---------- */
+  .reel-wrap{ margin: 6px 0 8px; }
+  .reel{
+    position: relative;
+    width: min(100%, 340px);
+    aspect-ratio: 9 / 16;
+    margin: 0 auto;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #14150F;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  }
+  .reel:focus-visible{ outline: 3px solid var(--rust); outline-offset: 4px; }
+  .reel-bars{
+    position: absolute;
+    top: 12px; left: 12px; right: 12px;
+    z-index: 4;
+    display: flex;
+    gap: 4px;
+    color: var(--paper);
+  }
+  .reel-bars span{
+    flex: 1;
+    height: 3px;
+    border-radius: 2px;
+    background: rgba(234,231,214,0.35);
+    overflow: hidden;
+  }
+  .reel-bars i{ display: block; height: 100%; width: 0; background: currentColor; }
+  .reel-bars span.done i{ width: 100%; }
+  .reel-bars span.on i{ animation: reel-fill 6s linear forwards; }
+  .reel.paused .reel-bars span.on i{ animation-play-state: paused; }
+  .reel.static .reel-bars span.on i{ animation: none; width: 100%; }
+  @keyframes reel-fill{ from{ width: 0; } to{ width: 100%; } }
+
+  .frame{
+    position: absolute;
+    inset: 0;
+    padding: 54px 26px 46px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .4s ease, visibility 0s linear .4s;
+  }
+  .frame.on{ opacity: 1; visibility: visible; transition: opacity .4s ease; }
+  .reel .frame p{ color: inherit; }
+  .frame .big{
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: clamp(2.7rem, 13vw, 3.9rem);
+    line-height: 0.98;
+    margin: 0 0 14px;
+  }
+  .frame .line{ font-family: var(--serif); font-size: 1.2rem; line-height: 1.38; margin: 0; }
+  .frame .src{
+    position: absolute;
+    left: 26px; right: 26px; bottom: 18px;
+    font-family: var(--sans);
+    font-size: 11.5px;
+    line-height: 1.35;
+    opacity: 0.82;
+    margin: 0;
+  }
+  .f-ink{ background: #14150F; color: var(--paper); }
+  .reel .f-ink .big{ color: var(--toxic); }
+  .f-rust{ background: var(--rust); color: #F6F1E2; }
+  .f-toxic{ background: var(--toxic); color: var(--ink); }
+  .f-paper{ background: var(--paper); color: var(--ink); }
+  .reel .f-paper .big{ color: var(--rust); }
+  .f-stripe::before{
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 10px;
+    background: repeating-linear-gradient(-45deg, var(--toxic) 0 18px, #14150F 18px 36px);
+  }
+  .reel .bars-ink{ color: var(--ink); }
+  .reel .bars-ink span{ background: rgba(27,28,21,0.22); }
+  .frame .reel-cta{
+    align-self: flex-start;
+    margin-top: 22px;
+    position: relative;
+    z-index: 5;
+    background: var(--toxic);
+    border-color: var(--toxic);
+    color: var(--ink);
+  }
+  .frame .reel-cta:hover{ background: var(--paper); border-color: var(--paper); color: var(--ink); }
+  .frame .reel-cta:focus-visible{ outline-color: var(--paper); }
+  .reel-tap{
+    position: absolute;
+    top: 0; bottom: 0;
+    z-index: 3;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+  .reel-tap.prev{ left: 0; width: 34%; }
+  .reel-tap.next{ right: 0; width: 66%; }
+  .reel-tap:focus-visible{ outline: none; }
+  .reel-controls{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 16px 0 0;
+  }
+  .reel-controls .btn{ padding: 9px 14px; min-width: 4.5rem; }
+  .reel-count{ font-family: var(--sans); font-size: 13px; color: var(--ash); min-width: 3.5rem; text-align: center; }
+
+  /* ---------- Shared reads ---------- */
+  .reads{ list-style: none; margin: 6px 0 0 !important; padding: 0 !important; }
+  .reads li{ margin: 0 0 12px !important; }
+  .read-card{
+    display: block;
+    text-decoration: none;
+    color: var(--ink);
+    padding: 16px 18px 15px;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--toxic);
+    border-radius: 2px;
+  }
+  .read-card:hover{ border-left-color: var(--rust); }
+  .read-card:hover .read-title{ color: var(--rust); }
+  .read-card:focus-visible{ outline: 2px solid var(--rust); outline-offset: 2px; }
+  .read-src{ display: block; font-family: var(--sans); font-size: 12.5px; color: var(--ash); margin-bottom: 3px; }
+  .read-title{
+    display: block;
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.1rem;
+    line-height: 1.3;
+    color: var(--soil);
+    margin-bottom: 6px;
+    text-decoration: underline;
+    text-decoration-color: rgba(63,61,38,0.35);
+    text-underline-offset: 3px;
+  }
+  .read-text{ display: block; font-family: var(--sans); font-size: 14.5px; line-height: 1.58; }
+
+  /* ---------- Pledge ---------- */
+  .post .status:empty{ min-height: 0; margin: 0; }
+  .pledge-list{ list-style: none; margin: 8px 0 4px !important; padding: 0 !important; }
+  .pledge-list li{ margin: 0 0 8px !important; }
+  .pledge-list label{
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 12px 14px;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.5;
+    cursor: pointer;
+  }
+  .pledge-list label:hover{ border-color: var(--soil); }
+  .pledge-list label:has(input:checked){ border-color: var(--rust); background: #E4DCC2; }
+  .pledge-list input{
+    flex: none;
+    width: 19px; height: 19px;
+    margin: 1px 0 0;
+    accent-color: var(--rust);
+  }
+  .pledge-list input:focus-visible{ outline: 2px solid var(--rust); outline-offset: 2px; }
+  .pledge-card{
+    position: relative;
+    margin: 18px 0 0;
+    padding: 28px 24px 24px;
+    background: #14150F;
+    color: var(--paper);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .pledge-card::before{
+    content: "";
+    position: absolute;
+    left: 0; right: 0; top: 0;
+    height: 8px;
+    background: repeating-linear-gradient(-45deg, var(--toxic) 0 18px, #14150F 18px 36px);
+  }
+  .post .pledge-card .pc-title{
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 1.05;
+    color: var(--toxic);
+    margin: 0 0 6px;
+  }
+  .post .pledge-card p{ color: var(--paper); font-size: 16px; margin: 0 0 10px; }
+  .pledge-card ul{
+    margin: 0 0 16px !important;
+    padding-left: 20px !important;
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--paper);
+  }
+  .pledge-card .btn{ border-color: var(--paper); color: var(--paper); }
+  .pledge-card .btn.primary{ background: var(--toxic); border-color: var(--toxic); color: var(--ink); }
+  .pledge-card .btn:hover{ background: var(--rust); border-color: var(--rust); color: var(--paper); }
+  .pledge-card .btn:focus-visible{ outline-color: var(--toxic); }
+  .post .pledge-card .status{ color: var(--toxic); }
+
+  .post p.video-link{ font-family: var(--sans); font-size: 13px; line-height: 1.5; color: var(--ash); margin: 0; }
+  .content-wrap.endnote{ padding: 30px clamp(18px, 5vw, 42px) 34px; }
+  .endnote .next-page{ margin-top: 0; }
+  .endnote .refs{ margin-top: 26px; }
+
+  @media (prefers-reduced-motion: reduce){
+    .frame, .frame.on{ transition: none; }
+  }
   @media (max-width: 640px){
-    .soon-list li{ grid-template-columns: minmax(0, 1fr); gap: 2px; }
+    .feed-head{ margin-top: 44px; }
+    .post{ padding: 22px 18px 26px; }
+    .post.pinned{ padding-top: 30px; }
+    .waffle{ grid-template-columns: minmax(0, 1fr); padding: 16px; gap: 18px; }
+    .waffle svg{ max-width: 260px; margin: 0 auto; }
+    .tier{ grid-template-columns: minmax(0, 1fr); padding-top: 20px; }
+    .post .tier-name{ font-size: 2.1rem; display: flex; align-items: baseline; gap: 10px; margin-bottom: 10px; }
+    .post .tier-name span{ display: inline; margin: 0; }
   }
 
   /* ---------- Hero ---------- */
@@ -663,20 +1114,351 @@
 </section>
 
 <section id="land-pollution">
-  <div class="soon">
-    <p class="soon-tag">Coming soon</p>
-    <h1>The next step is being prepared.</h1>
-    <p>This page will turn the facts and solutions into action. It will show how each of us can help keep waste off the land, starting at home and reaching the whole barangay.</p>
-    <ul class="soon-list">
-      <li><b>At home</b><span>Simple habits that cut and sort our waste every day.</span></li>
-      <li><b>In the barangay</b><span>How to support the MRF, segregated collection, and local clean-ups.</span></li>
-      <li><b>Speaking up</b><span>Ways to push for stronger enforcement and public reporting.</span></li>
-    </ul>
-    <p>While this page is being built, catch up on the story so far.</p>
-    <div class="soon-links">
-      <a class="primary" href="index.html">Read: What is the Issue?</a>
-      <a href="what-to-do.html">Read: What to do?</a>
+  <div class="content-wrap intro-wrap">
+    <h1 class="page-title">What Now?</h1>
+    <p class="lead">This is where the facts turn into action. The posts below are our own: why we made this page, what the data taught us, and what each of us must do next. Every post ends with something you can do today.</p>
+    <nav class="toc" aria-label="On this page">
+      <p class="toc-label">On this page</p>
+      <ol>
+        <li><a href="#goals">Why This Page Exists</a></li>
+        <li><a href="#learned">What We Learned</a></li>
+        <li><a href="#actions">What You Can Do</a></li>
+        <li><a href="#watch">Watch, Read, Share</a></li>
+        <li><a href="#pledge">Take the Pledge</a></li>
+      </ol>
+    </nav>
+  </div>
+
+  <div class="feed">
+
+    <!-- ===================== 1. GOALS ===================== -->
+    <div class="feed-head"><h2 id="goals">Why This Page Exists</h2></div>
+
+    <article class="post pinned" aria-labelledby="p-goals">
+      <header class="post-head">
+        <img class="avatar" src="land-pollution-favicon.png" alt="" width="44" height="44">
+        <div class="post-meta"><span class="post-name">Lupang Iingatan</span><span class="post-type"><svg aria-hidden="true" width="13" height="13" viewBox="0 0 14 14"><path d="M8.5 1.5l4 4-2 .8-2.6 2.6.3 2.6-1 1-2.6-2.6L1.8 13l-.8-.8 3-2.8L1.4 6.8l1-1 2.6.3 2.6-2.6z" fill="currentColor"/></svg>Pinned post</span></div>
+      </header>
+      <h3 id="p-goals">One sack at a time: why we made this page</h3>
+
+      <h4>Why we made it</h4>
+      <p>Every day, the Philippines produces about 61,700 tons of garbage. <span class="cite">(Philippine Information Agency, 2026)</span> Too much of it ends up where it should not: in open dumps, vacant lots, canals, and the smoke of burning trash. We made this page because these facts are easy to ignore when they are scattered. Here they are in one place, in plain words, with their sources.</p>
+
+      <h4>What we stand for</h4>
+      <p><i>Lupang Iingatan</i> means “the land we will protect.” About 95% of our food is produced in soil, it takes more than 1,000 years to form just 1 centimeter of it, and soil is home to a quarter of all life on Earth. <span class="cite">(Food and Agriculture Organization of the United Nations [FAO], 2017)</span> When we poison the land, we cannot simply make more. So this page stands for three things:</p>
+      <ul class="stand-list">
+        <li><strong>Sorted at the source.</strong> Every home separates its waste before it leaves the house.</li>
+        <li><strong>Laws that work.</strong> RA 9003 is enforced, not just written down.</li>
+        <li><strong>Producers that take back.</strong> Companies help recover the packaging they sell.</li>
+      </ul>
+
+      <h4>How we want you to join</h4>
+      <p>We are not asking you to save the planet. We are asking you to start with one sack. Read the posts, try one habit this week, take the pledge at the bottom of this page, and share it with one person. That is how a barangay changes: one household at a time.</p>
+
+      <div class="post-actions">
+        <a class="btn primary" href="#pledge">Take the pledge</a>
+        <button class="btn" type="button" data-share>Share this page</button>
+      </div>
+      <p class="status" data-share-status aria-live="polite"></p>
+      <p class="tags">#LupangIingatan #SimulanNatin</p>
+    </article>
+
+    <!-- ===================== 2. LEARNED ===================== -->
+    <div class="feed-head"><h2 id="learned">What We Learned</h2></div>
+
+    <article class="post" aria-labelledby="p-numbers">
+      <header class="post-head">
+        <img class="avatar" src="land-pollution-favicon.png" alt="" width="44" height="44">
+        <div class="post-meta"><span class="post-name">Lupang Iingatan</span><span class="post-type"><svg aria-hidden="true" width="13" height="13" viewBox="0 0 14 14"><path d="M2 11.2V13h1.8l6.6-6.6-1.8-1.8zM12.6 4.2a.9.9 0 000-1.3l-1.5-1.5a.9.9 0 00-1.3 0L8.7 2.5l1.8 1.8z" fill="currentColor"/></svg>Blog</span></div>
+      </header>
+      <h3 id="p-numbers">What the numbers told us</h3>
+      <p>On the <a href="index.html">What is the Issue?</a> and <a href="what-to-do.html">What to do?</a> pages, we collected data on land pollution and on the solutions already in place. Put together, the numbers say three things.</p>
+
+      <h4>Garbage is growing faster than our solutions.</h4>
+      <p>Daily waste rose from about 40,087 tons in 2016 to about 61,700 tons in 2026, an increase of roughly 54%. <span class="cite">(Senate Economic Planning Office, 2017; Philippine Information Agency, 2026)</span> In a single year, materials recovery facilities grew by 8.7%, while reported illegal dumpsites grew by 84%. <span class="cite">(Philippine Statistics Authority, 2025)</span></p>
+
+      <h4>The law is strong. The follow-through is weak.</h4>
+      <p>RA 9003 has required waste segregation since 2001. Today, 92% of LGUs have ten-year waste plans, yet only about 53% of the country’s waste ends up in sanitary landfills. <span class="cite">(Daily Tribune, 2026a)</span> At home, 1 in 5 households say they never segregate, and 27% get rid of their trash by burning it, which the law prohibits. <span class="cite">(Philippine Daily Inquirer, 2023)</span></p>
+
+      <h4>Most of the fix starts at home.</h4>
+      <p>Households produce 57% of the country’s solid waste, and 80% of what we throw away is biodegradable or recyclable. <span class="cite">(Senate Economic Planning Office, 2017)</span> An MRF can only recover what reaches it sorted. When waste arrives mixed, most of it ends up in a landfill or a dump.</p>
+
+      <div class="update-note">
+        <p><strong>Our conclusion.</strong> Laws do not sort garbage. People do. The system built under RA 9003 will only work when every household hands over waste that is already sorted, and when leaders are held to their own plans.</p>
+      </div>
+    </article>
+
+    <article class="post" aria-labelledby="p-100kg">
+      <header class="post-head">
+        <img class="avatar" src="land-pollution-favicon.png" alt="" width="44" height="44">
+        <div class="post-meta"><span class="post-name">Lupang Iingatan</span><span class="post-type"><svg aria-hidden="true" width="13" height="13" viewBox="0 0 14 14"><path d="M2 12.5h11M3.5 10V6.5M6.5 10V3M9.5 10V5M12 10V8" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>Infographic</span></div>
+      </header>
+      <h3 id="p-100kg">Out of every 100 kilos we throw away</h3>
+      <p>Only 18 kilos truly need a landfill. The rest could become compost, new products, or safely handled special waste, if we sort it first.</p>
+      <figure class="waffle" aria-labelledby="waffle-note">
+        <svg viewBox="0 0 276 276" role="img" aria-label="A grid of 100 squares, one per kilo of waste: 52 biodegradable, 28 recyclable, 18 residual, and 2 special."><rect x="0" y="0" width="24" height="24" rx="3" fill="#6F8214"/><rect x="28" y="0" width="24" height="24" rx="3" fill="#6F8214"/><rect x="56" y="0" width="24" height="24" rx="3" fill="#6F8214"/><rect x="84" y="0" width="24" height="24" rx="3" fill="#6F8214"/><rect x="112" y="0" width="24" height="24" rx="3" fill="#6F8214"/><rect x="140" y="0" width="24" height="24" rx="3" fill="#6F8214"/><rect x="168" y="0" width="24" height="24" rx="3" fill="#6F8214"/><rect x="196" y="0" width="24" height="24" rx="3" fill="#6F8214"/><rect x="224" y="0" width="24" height="24" rx="3" fill="#6F8214"/><rect x="252" y="0" width="24" height="24" rx="3" fill="#6F8214"/><rect x="0" y="28" width="24" height="24" rx="3" fill="#6F8214"/><rect x="28" y="28" width="24" height="24" rx="3" fill="#6F8214"/><rect x="56" y="28" width="24" height="24" rx="3" fill="#6F8214"/><rect x="84" y="28" width="24" height="24" rx="3" fill="#6F8214"/><rect x="112" y="28" width="24" height="24" rx="3" fill="#6F8214"/><rect x="140" y="28" width="24" height="24" rx="3" fill="#6F8214"/><rect x="168" y="28" width="24" height="24" rx="3" fill="#6F8214"/><rect x="196" y="28" width="24" height="24" rx="3" fill="#6F8214"/><rect x="224" y="28" width="24" height="24" rx="3" fill="#6F8214"/><rect x="252" y="28" width="24" height="24" rx="3" fill="#6F8214"/><rect x="0" y="56" width="24" height="24" rx="3" fill="#6F8214"/><rect x="28" y="56" width="24" height="24" rx="3" fill="#6F8214"/><rect x="56" y="56" width="24" height="24" rx="3" fill="#6F8214"/><rect x="84" y="56" width="24" height="24" rx="3" fill="#6F8214"/><rect x="112" y="56" width="24" height="24" rx="3" fill="#6F8214"/><rect x="140" y="56" width="24" height="24" rx="3" fill="#6F8214"/><rect x="168" y="56" width="24" height="24" rx="3" fill="#6F8214"/><rect x="196" y="56" width="24" height="24" rx="3" fill="#6F8214"/><rect x="224" y="56" width="24" height="24" rx="3" fill="#6F8214"/><rect x="252" y="56" width="24" height="24" rx="3" fill="#6F8214"/><rect x="0" y="84" width="24" height="24" rx="3" fill="#6F8214"/><rect x="28" y="84" width="24" height="24" rx="3" fill="#6F8214"/><rect x="56" y="84" width="24" height="24" rx="3" fill="#6F8214"/><rect x="84" y="84" width="24" height="24" rx="3" fill="#6F8214"/><rect x="112" y="84" width="24" height="24" rx="3" fill="#6F8214"/><rect x="140" y="84" width="24" height="24" rx="3" fill="#6F8214"/><rect x="168" y="84" width="24" height="24" rx="3" fill="#6F8214"/><rect x="196" y="84" width="24" height="24" rx="3" fill="#6F8214"/><rect x="224" y="84" width="24" height="24" rx="3" fill="#6F8214"/><rect x="252" y="84" width="24" height="24" rx="3" fill="#6F8214"/><rect x="0" y="112" width="24" height="24" rx="3" fill="#6F8214"/><rect x="28" y="112" width="24" height="24" rx="3" fill="#6F8214"/><rect x="56" y="112" width="24" height="24" rx="3" fill="#6F8214"/><rect x="84" y="112" width="24" height="24" rx="3" fill="#6F8214"/><rect x="112" y="112" width="24" height="24" rx="3" fill="#6F8214"/><rect x="140" y="112" width="24" height="24" rx="3" fill="#6F8214"/><rect x="168" y="112" width="24" height="24" rx="3" fill="#6F8214"/><rect x="196" y="112" width="24" height="24" rx="3" fill="#6F8214"/><rect x="224" y="112" width="24" height="24" rx="3" fill="#6F8214"/><rect x="252" y="112" width="24" height="24" rx="3" fill="#6F8214"/><rect x="0" y="140" width="24" height="24" rx="3" fill="#6F8214"/><rect x="28" y="140" width="24" height="24" rx="3" fill="#6F8214"/><rect x="56" y="140" width="24" height="24" rx="3" fill="#4E6E7E"/><rect x="84" y="140" width="24" height="24" rx="3" fill="#4E6E7E"/><rect x="112" y="140" width="24" height="24" rx="3" fill="#4E6E7E"/><rect x="140" y="140" width="24" height="24" rx="3" fill="#4E6E7E"/><rect x="168" y="140" width="24" height="24" rx="3" fill="#4E6E7E"/><rect x="196" y="140" width="24" height="24" rx="3" fill="#4E6E7E"/><rect x="224" y="140" width="24" height="24" rx="3" fill="#4E6E7E"/><rect x="252" y="140" width="24" height="24" rx="3" fill="#4E6E7E"/><rect x="0" y="168" width="24" height="24" rx="3" fill="#4E6E7E"/><rect x="28" y="168" width="24" height="24" rx="3" fill="#4E6E7E"/><rect x="56" y="168" width="24" height="24" rx="3" fill="#4E6E7E"/><rect x="84" y="168" width="24" height="24" rx="3" fill="#4E6E7E"/><rect x="112" y="168" width="24" height="24" rx="3" fill="#4E6E7E"/><rect x="140" y="168" width="24" height="24" rx="3" fill="#4E6E7E"/><rect x="168" y="168" width="24" height="24" rx="3" fill="#4E6E7E"/><rect x="196" y="168" width="24" height="24" rx="3" fill="#4E6E7E"/><rect x="224" y="168" width="24" height="24" rx="3" fill="#4E6E7E"/><rect x="252" y="168" width="24" height="24" rx="3" fill="#4E6E7E"/><rect x="0" y="196" width="24" height="24" rx="3" fill="#4E6E7E"/><rect x="28" y="196" width="24" height="24" rx="3" fill="#4E6E7E"/><rect x="56" y="196" width="24" height="24" rx="3" fill="#4E6E7E"/><rect x="84" y="196" width="24" height="24" rx="3" fill="#4E6E7E"/><rect x="112" y="196" width="24" height="24" rx="3" fill="#4E6E7E"/><rect x="140" y="196" width="24" height="24" rx="3" fill="#4E6E7E"/><rect x="168" y="196" width="24" height="24" rx="3" fill="#4E6E7E"/><rect x="196" y="196" width="24" height="24" rx="3" fill="#4E6E7E"/><rect x="224" y="196" width="24" height="24" rx="3" fill="#4E6E7E"/><rect x="252" y="196" width="24" height="24" rx="3" fill="#4E6E7E"/><rect x="0" y="224" width="24" height="24" rx="3" fill="#A8532B"/><rect x="28" y="224" width="24" height="24" rx="3" fill="#A8532B"/><rect x="56" y="224" width="24" height="24" rx="3" fill="#A8532B"/><rect x="84" y="224" width="24" height="24" rx="3" fill="#A8532B"/><rect x="112" y="224" width="24" height="24" rx="3" fill="#A8532B"/><rect x="140" y="224" width="24" height="24" rx="3" fill="#A8532B"/><rect x="168" y="224" width="24" height="24" rx="3" fill="#A8532B"/><rect x="196" y="224" width="24" height="24" rx="3" fill="#A8532B"/><rect x="224" y="224" width="24" height="24" rx="3" fill="#A8532B"/><rect x="252" y="224" width="24" height="24" rx="3" fill="#A8532B"/><rect x="0" y="252" width="24" height="24" rx="3" fill="#A8532B"/><rect x="28" y="252" width="24" height="24" rx="3" fill="#A8532B"/><rect x="56" y="252" width="24" height="24" rx="3" fill="#A8532B"/><rect x="84" y="252" width="24" height="24" rx="3" fill="#A8532B"/><rect x="112" y="252" width="24" height="24" rx="3" fill="#A8532B"/><rect x="140" y="252" width="24" height="24" rx="3" fill="#A8532B"/><rect x="168" y="252" width="24" height="24" rx="3" fill="#A8532B"/><rect x="196" y="252" width="24" height="24" rx="3" fill="#A8532B"/><rect x="224" y="252" width="24" height="24" rx="3" fill="#1B1C15"/><rect x="252" y="252" width="24" height="24" rx="3" fill="#1B1C15"/></svg>
+        <ul class="waffle-legend">
+          <li style="--c:#6F8214"><span class="kg">52</span><span class="kind">Biodegradable</span><span class="what">Food scraps, peelings, leaves. <b>Compost it.</b></span></li>
+          <li style="--c:#4E6E7E"><span class="kg">28</span><span class="kind">Recyclable</span><span class="what">Paper, bottles, cans, some plastics. <b>Sell or recycle it.</b></span></li>
+          <li style="--c:#A8532B"><span class="kg">18</span><span class="kind">Residual</span><span class="what">Diapers, most sachets and wrappers. <b>Only this goes to the landfill.</b></span></li>
+          <li style="--c:#1B1C15"><span class="kg">2</span><span class="kind">Special</span><span class="what">Batteries, bulbs, paint, old gadgets. <b>Keep it apart.</b></span></li>
+        </ul>
+      </figure>
+      <p class="fig-note" id="waffle-note">Composition of disposed solid waste in the Philippines, 2015. Data: National Solid Waste Management Commission, as reported by the Senate Economic Planning Office (2017). Infographic made by Lupang Iingatan.</p>
+      <p>If every home sorted, 8 of every 10 kilos would never need a landfill. That is the cheapest landfill space there is: the space we never fill.</p>
+    </article>
+
+    <article class="post" aria-labelledby="p-before">
+      <header class="post-head">
+        <img class="avatar" src="land-pollution-favicon.png" alt="" width="44" height="44">
+        <div class="post-meta"><span class="post-name">Lupang Iingatan</span><span class="post-type"><svg aria-hidden="true" width="13" height="13" viewBox="0 0 14 14"><rect x="1.5" y="3" width="11" height="8.5" rx="1" stroke="currentColor" stroke-width="1.4" fill="none"/><circle cx="7" cy="7.2" r="2" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>Photo and news</span></div>
+      </header>
+      <h3 id="p-before">We have seen this before</h3>
+      <figure class="photo">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Payatas-Dumpsite_Manila_Philippines02.jpg?width=960"
+             alt="A large mound of garbage at the Payatas dumpsite in Quezon City, with houses nearby."
+             loading="lazy" width="960" height="640"
+             onerror="this.parentNode.classList.add('img-missing')">
+        <p class="photo-fallback">The photo could not load. <a href="https://commons.wikimedia.org/wiki/File:Payatas-Dumpsite_Manila_Philippines02.jpg" target="_blank" rel="noopener">View it on Wikimedia Commons</a>.</p>
+        <figcaption>The Payatas dumpsite in Quezon City, 2007. Photo: Kounosu, via <a href="https://commons.wikimedia.org/wiki/File:Payatas-Dumpsite_Manila_Philippines02.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>, licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener">CC BY-SA 3.0</a>.</figcaption>
+      </figure>
+      <ol class="timeline">
+        <li><time datetime="2000-07">July 2000</time><p>A mountain of garbage at the Payatas dumpsite collapsed onto the homes around it and killed more than 200 people. The public outrage helped push a waste law through within months. <span class="cite">(Agence France-Presse, 2026)</span> RA 9003 was signed on January 26, 2001. <span class="cite">(Republic Act No. 9003, 2001)</span></p></li>
+        <li><time datetime="2026-01">January 2026</time><p>A huge mound of garbage at the Binaliw landfill in Cebu City gave way and buried workers and buildings. When the search ended ten days later, 36 people had died and 18 were hurt. <span class="cite">(Cebu Daily News, 2026)</span></p></li>
+        <li><time datetime="2026-04">April 2026</time><p>A fire at the inactive Navotas Sanitary Landfill raised new concerns about the safety of waste sites. The DENR then told all LGUs to stop operating open and controlled dumpsites immediately. <span class="cite">(Manila Bulletin, 2026)</span></p></li>
+      </ol>
+      <p>Twenty-six years apart, the lesson is the same. Every sack we do not sort adds to a mountain somewhere, and someone lives or works beside it. Sending less waste to these sites is the most basic kind of disaster prevention. We remember the workers and families who lost their lives.</p>
+    </article>
+
+    <!-- ===================== 3. ACTIONS ===================== -->
+    <div class="feed-head"><h2 id="actions">What You Can Do</h2></div>
+
+    <article class="post" aria-labelledby="p-ats">
+      <header class="post-head">
+        <img class="avatar" src="land-pollution-favicon.png" alt="" width="44" height="44">
+        <div class="post-meta"><span class="post-name">Lupang Iingatan</span><span class="post-type"><svg aria-hidden="true" width="13" height="13" viewBox="0 0 14 14"><path d="M5 3.5h7.5M5 7h7.5M5 10.5h7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="2.2" cy="3.5" r="1" fill="currentColor"/><circle cx="2.2" cy="7" r="1" fill="currentColor"/><circle cx="2.2" cy="10.5" r="1" fill="currentColor"/></svg>Guide</span></div>
+      </header>
+      <h3 id="p-ats">Ako, Tayo, Sila: who must do what</h3>
+      <p>Protecting the land is not one person’s job, but it starts with one person. Here is what each circle must do, from the home to the halls of government.</p>
+
+      <section class="tier" style="--tc:#A8532B" aria-labelledby="t-ako">
+        <p class="tier-name" id="t-ako">Ako <span>I, at home</span></p>
+        <ul class="do-list">
+          <li><b>Sort into four.</b> Biodegradable, recyclable, residual, and special. Segregation at source is required by law, not just encouraged. <span class="cite">(Republic Act No. 9003, 2001)</span></li>
+          <li><b>Compost food scraps.</b> Half of our garbage is food and garden waste. <span class="cite">(Senate Economic Planning Office, 2017)</span> A pot, a pit, or a barangay compost area turns it back into soil. See how in the composting video below.</li>
+          <li><b>Skip the sachet when you can.</b> Filipinos use an estimated 163 million sachets a day, and most are hard to recycle. <span class="cite">(World Bank Group, 2021)</span> Buy bigger packs, or bring a container to a refill store.</li>
+          <li><b>Never burn or dump trash.</b> Burning releases toxic smoke, and dumped waste seeps into soil and water. Both are illegal, with fines of ₱300 to ₱1,000 and community service or jail time. <span class="cite">(Republic Act No. 9003, 2001)</span></li>
+          <li><b>Keep special waste apart.</b> Batteries, bulbs, paint, old gadgets, and used oil need special handling. The country produced 269.55 thousand tons of hazardous waste in 2024, and oil was the largest share. <span class="cite">(Philippine Statistics Authority, 2025)</span></li>
+        </ul>
+      </section>
+
+      <section class="tier" style="--tc:#6F8214" aria-labelledby="t-tayo">
+        <p class="tier-name" id="t-tayo">Tayo <span>We, in the barangay and school</span></p>
+        <ul class="do-list">
+          <li><b>Follow the collection schedule.</b> Put out each type of waste on its own collection day, so sorted waste is not mixed again in the truck.</li>
+          <li><b>Ask about your MRF.</b> RA 9003 requires one in every barangay or cluster of barangays. <span class="cite">(Republic Act No. 9003, 2001)</span> At the next barangay assembly, ask whether yours is working and who runs it.</li>
+          <li><b>Make clean-ups count.</b> Sort what you collect during a clean-up drive, so it goes to the MRF and not back to a dump.</li>
+          <li><b>Start at school.</b> Sixteen schools lead the zero waste program of San Fernando, Pampanga, a city that has cut the waste it sends for disposal by about 80%. <span class="cite">(ABS-CBN News, 2019)</span> A compost pit and a garden make a good first project.</li>
+        </ul>
+      </section>
+
+      <section class="tier" style="--tc:#3F3D26" aria-labelledby="t-sila">
+        <p class="tier-name" id="t-sila">Sila <span>They, leaders and companies</span></p>
+        <div>
+          <p class="tier-note">These are not ours to do, but they are ours to demand.</p>
+          <ul class="do-list">
+            <li><b>LGUs must close dumpsites and show results.</b> The DENR has ordered all open and controlled dumpsites to stop operating. <span class="cite">(Manila Bulletin, 2026)</span> Ask your city or municipality to publish the yearly results of its ten-year plan, so citizens can check whether it works.</li>
+            <li><b>Barangays must enforce, fairly.</b> Collect only sorted waste, keep the MRF running, and act on reports of dumping and burning.</li>
+            <li><b>Companies must take back their packaging.</b> Under the EPR Act, large companies must recover 60% of their plastic packaging footprint in 2026 and 80% from 2028. <span class="cite">(Republic Act No. 11898, 2022)</span> In 2025, registered programs diverted about 246 million kilos of plastic. <span class="cite">(Daily Tribune, 2026b)</span> Ask the brands you buy what they do with their sachets.</li>
+            <li><b>Everyone can report.</b> If you see illegal dumping or open burning, report it to your barangay, your city or municipal environment office, or the DENR-EMB regional office. Note the place and time, take a photo if it is safe, and follow up.</li>
+          </ul>
+        </div>
+      </section>
+
+      <div class="update-note">
+        <p><strong>Why this protects the whole ecosystem.</strong> Clean soil keeps doing its quiet work: growing our food, filtering our water, and housing a quarter of Earth’s living things. <span class="cite">(FAO, 2017)</span> Every action above protects that work.</p>
+      </div>
+    </article>
+
+    <!-- ===================== 4. WATCH / READ ===================== -->
+    <div class="feed-head"><h2 id="watch">Watch, Read, Share</h2></div>
+
+    <article class="post" aria-labelledby="p-reel">
+      <header class="post-head">
+        <img class="avatar" src="land-pollution-favicon.png" alt="" width="44" height="44">
+        <div class="post-meta"><span class="post-name">Lupang Iingatan</span><span class="post-type"><svg aria-hidden="true" width="13" height="13" viewBox="0 0 14 14"><rect x="3" y="1" width="8" height="12" rx="1.6" stroke="currentColor" stroke-width="1.4" fill="none"/><path d="M6 5.2v3.6L9 7z" fill="currentColor"/></svg>Reel</span></div>
+      </header>
+      <h3 id="p-reel">The whole page in six frames</h3>
+      <p>We made this short reel for people who scroll fast. Tap the right side to go forward and the left side to go back, or use the buttons below.</p>
+      <div class="reel-wrap">
+        <div class="reel paused" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Reel: Simulan Natin, six frames">
+          <div class="reel-bars" aria-hidden="true">
+            <span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span>
+          </div>
+          <div class="frame f-ink on" role="group" aria-roledescription="frame" aria-label="1 of 6" data-bars="light">
+            <p class="big">61,700</p>
+            <p class="line">tons of garbage. That is what the Philippines produces every single day.</p>
+            <p class="src">Source: Philippine Information Agency (2026)</p>
+          </div>
+          <div class="frame f-paper" role="group" aria-roledescription="frame" aria-label="2 of 6" data-bars="ink">
+            <p class="big">8 in 10</p>
+            <p class="line">kilos of it could have been composted or recycled instead.</p>
+            <p class="src">Source: NSWMC data in Senate Economic Planning Office (2017)</p>
+          </div>
+          <div class="frame f-rust" role="group" aria-roledescription="frame" aria-label="3 of 6" data-bars="light">
+            <p class="big">57%</p>
+            <p class="line">of it comes from our own homes. So the fix starts there, too.</p>
+            <p class="src">Source: Senate Economic Planning Office (2017)</p>
+          </div>
+          <div class="frame f-ink" role="group" aria-roledescription="frame" aria-label="4 of 6" data-bars="light">
+            <p class="big">1 in 5</p>
+            <p class="line">households never sort their garbage. More than 1 in 4 burn it.</p>
+            <p class="src">Source: SWS survey, in Philippine Daily Inquirer (2023)</p>
+          </div>
+          <div class="frame f-toxic" role="group" aria-roledescription="frame" aria-label="5 of 6" data-bars="ink">
+            <p class="big">1,000+ years</p>
+            <p class="line">to form just 1 cm of soil. What we poison, we cannot quickly replace.</p>
+            <p class="src">Source: FAO (2017)</p>
+          </div>
+          <div class="frame f-ink f-stripe" role="group" aria-roledescription="frame" aria-label="6 of 6" data-bars="light">
+            <p class="big">Simulan natin.</p>
+            <p class="line">Sort it. Compost it. Skip the sachet. Speak up.</p>
+            <a class="btn reel-cta" href="#pledge">Take the pledge</a>
+            <p class="src">#LupangIingatan #SimulanNatin</p>
+          </div>
+          <button class="reel-tap prev" type="button" tabindex="-1" aria-hidden="true"></button>
+          <button class="reel-tap next" type="button" tabindex="-1" aria-hidden="true"></button>
+        </div>
+        <div class="reel-controls">
+          <button class="btn" type="button" data-reel="prev">Back</button>
+          <button class="btn primary" type="button" data-reel="toggle" aria-pressed="false">Play</button>
+          <button class="btn" type="button" data-reel="next">Next</button>
+          <span class="reel-count" aria-live="polite">1 of 6</span>
+        </div>
+      </div>
+      <p class="tags">#LupangIingatan #SimulanNatin</p>
+    </article>
+
+    <article class="post" aria-labelledby="p-fao">
+      <header class="post-head">
+        <img class="avatar" src="land-pollution-favicon.png" alt="" width="44" height="44">
+        <div class="post-meta"><span class="post-name">Lupang Iingatan</span><span class="post-type"><svg aria-hidden="true" width="13" height="13" viewBox="0 0 14 14"><path d="M8 2.5l4 3.5-4 3.5V7.6C5 7.6 3.2 8.6 2 11c.4-3.4 2.3-5.4 6-5.8z" fill="currentColor"/></svg>Shared video</span></div>
+      </header>
+      <h3 id="p-fao">Small habits keep soil clean</h3>
+      <p>This short video from the Food and Agriculture Organization of the United Nations makes a point we agree with: you do not need a lab coat to fight soil pollution. Reducing, reusing, and recycling keep harmful waste out of the ground that grows our food. After watching, look inside your own trash bin. What in there could have been avoided?</p>
+      <div class="video-frame">
+        <iframe src="https://www.youtube-nocookie.com/embed/s1O3_0GKiEg"
+                title="How can you be the solution to soil pollution (FAO)"
+                loading="lazy"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen></iframe>
+      </div>
+      <p class="video-link">Video: Food and Agriculture Organization of the United Nations (2018), <i>How can you be the solution to soil pollution</i> · <a href="https://www.youtube.com/watch?v=s1O3_0GKiEg" target="_blank" rel="noopener">Watch on YouTube</a></p>
+    </article>
+
+    <article class="post" aria-labelledby="p-wwf">
+      <header class="post-head">
+        <img class="avatar" src="land-pollution-favicon.png" alt="" width="44" height="44">
+        <div class="post-meta"><span class="post-name">Lupang Iingatan</span><span class="post-type"><svg aria-hidden="true" width="13" height="13" viewBox="0 0 14 14"><path d="M8 2.5l4 3.5-4 3.5V7.6C5 7.6 3.2 8.6 2 11c.4-3.4 2.3-5.4 6-5.8z" fill="currentColor"/></svg>Shared video</span></div>
+      </header>
+      <h3 id="p-wwf">Composting, explained simply</h3>
+      <p>More than half of our garbage is biodegradable, so composting is the biggest single habit a household can pick up. <span class="cite">(Senate Economic Planning Office, 2017)</span> This explainer from WWF-Philippines shows how food waste becomes compost, and why that matters for the food waste problem in the Philippines. Share it with whoever does the cooking at home.</p>
+      <div class="video-frame">
+        <iframe src="https://www.youtube-nocookie.com/embed/kBDV20RurvQ"
+                title="Kwentong Kompost (WWF-Philippines)"
+                loading="lazy"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen></iframe>
+      </div>
+      <p class="video-link">Video: WWF-Philippines, <i>Kwentong Kompost</i> · <a href="https://www.youtube.com/watch?v=kBDV20RurvQ" target="_blank" rel="noopener">Watch on YouTube</a></p>
+    </article>
+
+    <article class="post" aria-labelledby="p-reads">
+      <header class="post-head">
+        <img class="avatar" src="land-pollution-favicon.png" alt="" width="44" height="44">
+        <div class="post-meta"><span class="post-name">Lupang Iingatan</span><span class="post-type"><svg aria-hidden="true" width="13" height="13" viewBox="0 0 14 14"><path d="M6 8a2.5 2.5 0 003.5 0l2-2a2.5 2.5 0 00-3.5-3.5l-.6.6M8 6a2.5 2.5 0 00-3.5 0l-2 2A2.5 2.5 0 006 11.5l.6-.6" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>Shared reads</span></div>
+      </header>
+      <h3 id="p-reads">Three things worth your time</h3>
+      <p>We read and watched a lot for this project. These three are the ones we would hand to a friend first.</p>
+      <ul class="reads">
+        <li>
+          <a class="read-card" href="https://www.gmanetwork.com/entertainment/videos/republika-ng-plastik-full-episode-the-atom-araullo-specials/307394/" target="_blank" rel="noopener">
+            <span class="read-src">Documentary from GMA Public Affairs, 2024</span>
+            <span class="read-title">Republika ng Plastik (The Atom Araullo Specials)</span>
+            <span class="read-text">A full documentary on the country’s growing plastic crisis and what it does to nature, livelihoods, and health. It asks a hard question: can we solve a problem made of something that lasts almost forever? Watch it with your family.</span>
+          </a>
+        </li>
+        <li>
+          <a class="read-card" href="https://www.worldbank.org/en/country/philippines/publication/market-study-for-philippines-plastics-circularity-opportunities-and-barriers-report-landing-page" target="_blank" rel="noopener">
+            <span class="read-src">Report from the World Bank Group, 2021</span>
+            <span class="read-title">Market Study for the Philippines: Plastics Circularity Opportunities and Barriers</span>
+            <span class="read-text">Our trash is also wasted money. The country generates 2.7 million tons of plastic waste a year, and about 78% of the value of key plastics, more than US$890 million a year, is lost when they are thrown away instead of recycled.</span>
+          </a>
+        </li>
+        <li>
+          <a class="read-card" href="https://www.unep.org/ietc/resources/report/global-waste-management-outlook-2024" target="_blank" rel="noopener">
+            <span class="read-src">Report from the United Nations Environment Programme, 2024</span>
+            <span class="read-title">Global Waste Management Outlook 2024</span>
+            <span class="read-text">The world picture. In 2020, 38% of the world’s municipal waste was dumped or openly burned, and the yearly total is expected to grow from 2.1 to 3.8 billion tons by 2050. The Philippines is not alone in this problem, and it is not alone in the solutions either.</span>
+          </a>
+        </li>
+      </ul>
+    </article>
+
+    <!-- ===================== 5. PLEDGE ===================== -->
+    <div class="feed-head"><h2 id="pledge">Take the Pledge</h2></div>
+
+    <article class="post" aria-labelledby="p-pledge">
+      <header class="post-head">
+        <img class="avatar" src="land-pollution-favicon.png" alt="" width="44" height="44">
+        <div class="post-meta"><span class="post-name">Lupang Iingatan</span><span class="post-type"><svg aria-hidden="true" width="13" height="13" viewBox="0 0 14 14"><path d="M7 12.8s-5-3-5-6.6A2.6 2.6 0 017 4.6a2.6 2.6 0 015 1.6c0 3.6-5 6.6-5 6.6z" fill="currentColor"/></svg>Pledge</span></div>
+      </header>
+      <h3 id="p-pledge">Ako ang simula</h3>
+      <p>“I am where it starts.” Choose the actions you will take, then copy your pledge and post it with #LupangIingatan. Your choices are saved only in this browser. Nothing is sent anywhere.</p>
+      <div class="pledge" data-pledge>
+        <fieldset style="border:0;margin:0;padding:0;min-width:0">
+          <legend class="tier-note" style="padding:0">Starting today, I will:</legend>
+          <ul class="pledge-list">
+            <li><label><input type="checkbox" value="sort my waste into four: biodegradable, recyclable, residual, and special">Sort my waste into four: biodegradable, recyclable, residual, and special.</label></li>
+            <li><label><input type="checkbox" value="compost our food scraps or bring them to the barangay compost area">Compost our food scraps or bring them to the barangay compost area.</label></li>
+            <li><label><input type="checkbox" value="skip sachets and single-use plastic when I have a choice">Skip sachets and single-use plastic when I have a choice.</label></li>
+            <li><label><input type="checkbox" value="never burn or dump garbage">Never burn or dump garbage.</label></li>
+            <li><label><input type="checkbox" value="put out sorted waste on the right collection day">Put out sorted waste on the right collection day.</label></li>
+            <li><label><input type="checkbox" value="report illegal dumping and open burning">Report illegal dumping and open burning.</label></li>
+            <li><label><input type="checkbox" value="share this page with at least one person">Share this page with at least one person.</label></li>
+          </ul>
+        </fieldset>
+        <div class="post-actions">
+          <button class="btn primary" type="button" data-pledge-make>Take the pledge</button>
+        </div>
+        <p class="status" data-pledge-status aria-live="polite"></p>
+
+        <div class="pledge-card" data-pledge-card hidden tabindex="-1">
+          <p class="pc-title">Ako ang simula.</p>
+          <p data-pledge-count></p>
+          <ul data-pledge-items></ul>
+          <div class="post-actions">
+            <button class="btn primary" type="button" data-pledge-copy>Copy my pledge</button>
+            <button class="btn" type="button" data-share>Share this page</button>
+            <button class="btn" type="button" data-pledge-edit>Change my pledge</button>
+          </div>
+          <p class="status" data-share-status aria-live="polite"></p>
+        </div>
+      </div>
+    </article>
+
+    <div class="content-wrap endnote">
+      <article>
+        <p class="next-page">Next: <a href="glossary.html">Glossary</a></p>
+        <div class="refs" id="references">
+          <h2>References</h2>
+          <p>The sources used on this page are listed on the <a href="references.html#refs-now">References page under “What Now?”</a>. Unfamiliar words are explained in the <a href="glossary.html#terms-now">Glossary</a>.</p>
+        </div>
+      </article>
     </div>
+
   </div>
 </section>
 
@@ -715,6 +1497,176 @@
         if(open){ closeAll(); open.querySelector('.nav-toggle').focus(); }
       }
     });
+  })();
+</script>
+<script>
+  (function(){
+    var PAGE_URL = 'https://liwa1995.github.io/PEEC-project-land-pollution/what-now.html';
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function copyText(text){
+      if(navigator.clipboard && window.isSecureContext){ return navigator.clipboard.writeText(text); }
+      return new Promise(function(resolve, reject){
+        var ta = document.createElement('textarea');
+        ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        var ok = false;
+        try{ ok = document.execCommand('copy'); }catch(e){}
+        document.body.removeChild(ta);
+        ok ? resolve() : reject();
+      });
+    }
+
+    /* Share this page */
+    document.querySelectorAll('[data-share]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var box = btn.closest('.pledge-card') || btn.closest('.post');
+        var status = box.querySelector('[data-share-status]');
+        if(navigator.share){
+          navigator.share({
+            title: 'What Now? | Lupang Iingatan',
+            text: 'Lupang Iingatan... Simulan Natin. Simple, sourced actions against land pollution in the Philippines.',
+            url: PAGE_URL
+          }).catch(function(){});
+          return;
+        }
+        copyText(PAGE_URL).then(function(){
+          status.textContent = 'Link copied. Paste it in a chat or a post.';
+        }, function(){
+          status.textContent = 'Copy this link: ' + PAGE_URL;
+        });
+      });
+    });
+
+    /* Reel */
+    var reel = document.querySelector('.reel');
+    if(reel){
+      var frames = [].slice.call(reel.querySelectorAll('.frame'));
+      var bars = [].slice.call(reel.querySelectorAll('.reel-bars span'));
+      var barsBox = reel.querySelector('.reel-bars');
+      var count = document.querySelector('.reel-count');
+      var toggle = document.querySelector('[data-reel="toggle"]');
+      var i = 0, ended = false, userPaused = false, timer = null;
+      if(reduce) reel.classList.add('static');
+
+      function playing(){ return !reel.classList.contains('paused'); }
+      function setPlaying(on){
+        reel.classList.toggle('paused', !on);
+        toggle.textContent = on ? 'Pause' : 'Play';
+        toggle.setAttribute('aria-pressed', on ? 'true' : 'false');
+        tick();
+      }
+      function show(n){
+        i = (n + frames.length) % frames.length;
+        frames.forEach(function(f, k){ f.classList.toggle('on', k === i); });
+        bars.forEach(function(b, k){ b.classList.toggle('done', k < i); b.classList.remove('on'); });
+        void bars[i].offsetWidth;
+        bars[i].classList.add('on');
+        barsBox.classList.toggle('bars-ink', frames[i].getAttribute('data-bars') === 'ink');
+        count.textContent = (i + 1) + ' of ' + frames.length;
+        ended = false;
+        tick();
+      }
+      function finish(){
+        if(i < frames.length - 1){ show(i + 1); }
+        else { ended = true; setPlaying(false); }
+      }
+      /* With reduced motion there is no bar animation, so a timer advances the frames instead. */
+      function tick(){
+        clearTimeout(timer);
+        if(reel.classList.contains('static') && playing()){ timer = setTimeout(finish, 6000); }
+      }
+      reel.addEventListener('animationend', function(e){
+        if(bars[i].contains(e.target) && playing()){ finish(); }
+      });
+      function step(d){ show(i + d); }
+      document.querySelector('[data-reel="prev"]').addEventListener('click', function(){ step(-1); });
+      document.querySelector('[data-reel="next"]').addEventListener('click', function(){ step(1); });
+      reel.querySelector('.reel-tap.prev').addEventListener('click', function(){ step(-1); });
+      reel.querySelector('.reel-tap.next').addEventListener('click', function(){ step(1); });
+      reel.addEventListener('keydown', function(e){
+        if(e.key === 'ArrowRight'){ e.preventDefault(); step(1); }
+        if(e.key === 'ArrowLeft'){ e.preventDefault(); step(-1); }
+      });
+      toggle.addEventListener('click', function(){
+        if(playing()){ userPaused = true; setPlaying(false); }
+        else { userPaused = false; if(ended){ show(0); } setPlaying(true); }
+      });
+      show(0);
+      /* Play on its own once it scrolls into view; pause when it scrolls away. */
+      if('IntersectionObserver' in window && !reduce){
+        new IntersectionObserver(function(entries){
+          entries.forEach(function(en){
+            if(en.isIntersecting){ if(!userPaused && !ended && !playing()){ setPlaying(true); } }
+            else if(playing()){ setPlaying(false); }
+          });
+        }, { threshold: 0.6 }).observe(reel);
+      }
+    }
+
+    /* Pledge */
+    var pledge = document.querySelector('[data-pledge]');
+    if(pledge){
+      var KEY = 'lupang-iingatan-pledge';
+      var boxes = [].slice.call(pledge.querySelectorAll('input[type="checkbox"]'));
+      var card = pledge.querySelector('[data-pledge-card]');
+      var list = pledge.querySelector('[data-pledge-items]');
+      var countEl = pledge.querySelector('[data-pledge-count]');
+      var status = pledge.querySelector('[data-pledge-status]');
+      var cardStatus = card.querySelector('[data-share-status]');
+      var current = [];
+
+      function chosen(){
+        return boxes.filter(function(b){ return b.checked; }).map(function(b){ return b.value; });
+      }
+      function save(items){ try{ localStorage.setItem(KEY, JSON.stringify(items)); }catch(e){} }
+      function load(){
+        try{ var v = JSON.parse(localStorage.getItem(KEY) || 'null'); return Array.isArray(v) ? v : null; }
+        catch(e){ return null; }
+      }
+      function render(items, focus){
+        current = items;
+        list.innerHTML = '';
+        items.forEach(function(t){
+          var li = document.createElement('li');
+          li.textContent = t.charAt(0).toUpperCase() + t.slice(1) + '.';
+          list.appendChild(li);
+        });
+        countEl.textContent = items.length === 1
+          ? 'Starting today, I will do this one thing for the land:'
+          : 'Starting today, I will do these ' + items.length + ' things for the land:';
+        cardStatus.textContent = '';
+        card.hidden = false;
+        if(focus){ card.focus(); }
+      }
+      pledge.querySelector('[data-pledge-make]').addEventListener('click', function(){
+        var items = chosen();
+        if(!items.length){ status.textContent = 'Choose at least one action first.'; return; }
+        status.textContent = '';
+        save(items);
+        render(items, true);
+      });
+      pledge.querySelector('[data-pledge-edit]').addEventListener('click', function(){
+        card.hidden = true;
+        status.textContent = 'Change your choices, then press Take the pledge again.';
+        boxes[0].focus();
+      });
+      pledge.querySelector('[data-pledge-copy]').addEventListener('click', function(){
+        var text = 'Ako ang simula. Starting today, I will:\n'
+          + current.map(function(t){ return '- ' + t; }).join('\n')
+          + '\n\nLupang Iingatan... Simulan Natin.\n' + PAGE_URL + '\n#LupangIingatan #SimulanNatin';
+        copyText(text).then(function(){
+          cardStatus.textContent = 'Pledge copied. Paste it in your post or story.';
+        }, function(){
+          cardStatus.textContent = 'Copying was blocked. Select the list above and copy it by hand.';
+        });
+      });
+      var saved = load();
+      if(saved && saved.length){
+        boxes.forEach(function(b){ b.checked = saved.indexOf(b.value) > -1; });
+        render(saved, false);
+      }
+    }
   })();
 </script>
 </body>
